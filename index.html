@@ -417,23 +417,6 @@
             animation: roseFloat 4s linear forwards;
         }
 
-        .card-counter {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: var(--accent-pink);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
-            z-index: 20;
-        }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -746,12 +729,6 @@
                 cardElement.id = `card-${card.id}`;
                 cardElement.innerHTML = generateCardHTML(card);
                 cardsContainer.appendChild(cardElement);
-                
-                // Add card counter
-                const counter = document.createElement('div');
-                counter.className = 'card-counter';
-                counter.textContent = card.id;
-                cardElement.appendChild(counter);
                 
                 // Initialize stars for card 5
                 if (card.id === 5) {
@@ -1276,41 +1253,45 @@
             }
         }
 
-        // Teleport button (for NO button) - FIXED VERSION
+        // Teleport button (for NO button) - FIXED: Won't go out of frame
         function teleportButton(button) {
             const card = document.getElementById(`card-17`);
             if (!card) return;
             
+            // Get card dimensions
             const cardRect = card.getBoundingClientRect();
             const buttonRect = button.getBoundingClientRect();
             
-            // Calculate safe area within the card (considering padding)
+            // Calculate available space within the card (with padding)
             const padding = 20;
-            const maxX = cardRect.width - buttonRect.width - (padding * 2);
-            const maxY = cardRect.height - buttonRect.height - (padding * 2);
             
-            // Ensure we have positive values
-            if (maxX <= 0 || maxY <= 0) {
-                console.log("Card too small for teleportation");
+            // Ensure button stays within visible card area (accounting for image and text)
+            // The button should stay in the lower part of the card where there's space
+            const availableWidth = cardRect.width - buttonRect.width - (padding * 2);
+            
+            // Limit vertical movement to bottom 40% of card to avoid covering image/text
+            const verticalStart = cardRect.height * 0.6; // Start at 60% from top
+            const availableHeight = (cardRect.height * 0.4) - buttonRect.height - padding;
+            
+            if (availableWidth <= 0 || availableHeight <= 0) {
+                console.log("Not enough space for teleportation");
                 return;
             }
             
-            // Random position within safe area
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
+            // Random position within available space
+            const randomX = Math.random() * availableWidth;
+            const randomY = verticalStart + (Math.random() * availableHeight);
             
             // Set position relative to the card
             button.style.position = 'absolute';
             button.style.left = `${randomX + padding}px`;
-            button.style.top = `${randomY + padding}px`;
+            button.style.top = `${randomY}px`;
             button.style.zIndex = '101';
             
             // Ensure button is visible
             button.style.opacity = '1';
             button.style.visibility = 'visible';
             button.style.display = 'block';
-            
-            console.log(`NO button teleported to: ${randomX + padding}px, ${randomY + padding}px`);
         }
 
         // Create hearts animation
