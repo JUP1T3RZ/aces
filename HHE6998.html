@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Jace ❤️</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pastel-pink: #ffd6e7;
+            --dark-pink: #ff85a2;
+            --light-pink: #ffe4ec;
+            --accent-pink: #ff4d7a;
+            --text-color: #333;
+            --gray-text: #777;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --shadow: 0 8px 32px rgba(255, 105, 180, 0.1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--pastel-pink);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 214, 231, 0.8) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 133, 162, 0.6) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9) 0%, transparent 30%);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--light-pink);
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-pink);
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .cards-container {
+            position: relative;
+            height: 600px;
+            perspective: 1000px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            border: 2px solid var(--light-pink);
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(100%) rotateY(20deg);
+        }
+
+        .card.active {
+            opacity: 1;
+            transform: translateX(0) rotateY(0);
+            z-index: 10;
+        }
+
+        .card.prev {
+            opacity: 0;
+            transform: translateX(-100%) rotateY(-20deg);
+            z-index: 1;
+        }
+
+        .card.next {
+            opacity: 0;
+            transform: translateX(100%) rotateY(20deg);
+            z-index: 1;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--accent-pink);
+            margin-bottom: 20px;
+            width: 100%;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--pastel-pink);
+        }
+
+        .card-content {
+            flex: 1;
+            width: 100%;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            overflow-y: auto;
+            max-height: calc(100% - 130px);
+            margin-bottom: 20px;
+        }
+
+        .card-description {
+            text-align: left;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            width: 100%;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.3s;
+        }
+
+        .card-italic {
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            color: var(--accent-pink);
+            font-size: 1.2rem;
+            margin: 15px 0;
+        }
+
+        .card-gray {
+            color: var(--gray-text);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .card-image {
+            max-width: 100%;
+            max-height: 250px;
+            border-radius: 15px;
+            margin: 15px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-gif {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+
+        .card-buttons {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding-top: 20px;
+            border-top: 2px dashed var(--pastel-pink);
+            margin-top: auto;
+        }
+
+        .nav-btn {
+            background-color: var(--light-pink);
+            color: var(--accent-pink);
+            border: none;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-pink);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3);
+        }
+
+        .nav-btn:active {
+            transform: translateY(0);
+        }
+
+        .nav-btn i {
+            margin-right: 8px;
+        }
+
+        .card-start-btn {
+            background: linear-gradient(to right, var(--accent-pink), var(--dark-pink));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
+        }
+
+        .card-start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 105, 180, 0.5);
+        }
+
+        .card-audio-player {
+            width: 100%;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .audio-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .audio-info i {
+            color: var(--accent-pink);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .audio-info span {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+        }
+
+        .audio-loading {
+            font-size: 0.8rem;
+            color: var(--gray-text);
+            margin-top: 5px;
+            display: none;
+        }
+
+        .audio-error {
+            font-size: 0.8rem;
+            color: #ff3333;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .stars-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 15px 0;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .star {
+            color: gold;
+            font-size: 1.5rem;
+            margin: 0 2px;
+            animation: starTwinkle 2s infinite;
+        }
+
+        .star-spawn {
+            position: absolute;
+            color: gold;
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: starSpawn 3s linear forwards;
+            z-index: 1;
+        }
+
+        .rating-item {
+            width: 100%;
+            margin: 10px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px dotted var(--pastel-pink);
+            position: relative;
+        }
+
+        .rating-category {
+            font-weight: 600;
+            color: var(--accent-pink);
+        }
+
+        .rating-stars {
+            margin-left: 10px;
+        }
+
+        .rating-comment {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .beauty-stars-container {
+            position: relative;
+            height: 40px;
+            width: 100%;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .beauty-star {
+            position: absolute;
+            color: gold;
+            font-size: 1.2rem;
+            animation: beautyStarFloat 4s linear forwards;
+            bottom: 0;
+        }
+
+        .quote-text {
+            font-weight: bold;
+            color: var(--accent-pink);
+        }
+
+        .choice-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            width: 100%;
+            position: relative;
+            min-height: 60px;
+        }
+
+        .choice-btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .yes-btn {
+            background: linear-gradient(to right, #ff85a2, #ff4d7a);
+            color: white;
+            position: relative;
+            z-index: 101;
+        }
+
+        .no-btn {
+            background: linear-gradient(to right, #cccccc, #aaaaaa);
+            color: white;
+            position: relative;
+            z-index: 101;
+        }
+
+        .heart-animation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            color: var(--accent-pink);
+            font-size: 1.5rem;
+            opacity: 0;
+            animation: heartFloat 3s linear forwards;
+        }
+
+        .rose {
+            position: absolute;
+            bottom: -30px;
+            color: #ff3333;
+            font-size: 2rem;
+            opacity: 0;
+            animation: roseFloat 4s linear forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.9); }
+        }
+
+        @keyframes starSpawn {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            10% { opacity: 1; transform: translateY(-10px) scale(1); }
+            100% { opacity: 0; transform: translateY(-100px) scale(1); }
+        }
+
+        @keyframes beautyStarFloat {
+            0% { 
+                opacity: 0; 
+                transform: translateY(0) scale(0) rotate(0deg); 
+            }
+            10% { 
+                opacity: 1; 
+                transform: translateY(-10px) scale(1) rotate(10deg); 
+            }
+            100% { 
+                opacity: 0; 
+                transform: translateY(-100px) scale(1) rotate(360deg); 
+            }
+        }
+
+        @keyframes heartFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0); }
+            10% { opacity: 1; transform: translateY(-10px) scale(1); }
+            100% { opacity: 0; transform: translateY(-100px) scale(1); }
+        }
+
+        @keyframes roseFloat {
+            0% { opacity: 0; transform: translateY(0) rotate(0deg) scale(0); }
+            10% { opacity: 1; transform: translateY(-10px) rotate(10deg) scale(1); }
+            100% { opacity: 0; transform: translateY(-120px) rotate(30deg) scale(1); }
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 20px;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .card-description {
+                font-size: 1rem;
+            }
+            
+            .nav-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .card-start-btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .choice-btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .cards-container {
+                height: 650px;
+            }
+            
+            .card-content {
+                max-height: calc(100% - 120px);
+            }
+            
+            .choice-buttons {
+                min-height: 50px;
+            }
+        }
+
+        /* Spotify Wrapped style decorations */
+        .spotify-decoration {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(255, 214, 231, 0.7) 0%, transparent 70%);
+        }
+
+        .decoration-2 {
+            bottom: 15%;
+            right: 8%;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, rgba(255, 133, 162, 0.5) 0%, transparent 70%);
+        }
+
+        .decoration-3 {
+            top: 40%;
+            left: 80%;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(255, 214, 231, 0.6) 0%, transparent 70%);
+        }
+        
+        /* Scrollbar styling */
+        .card-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .card-content::-webkit-scrollbar-track {
+            background: rgba(255, 214, 231, 0.3);
+            border-radius: 10px;
+        }
+        
+        .card-content::-webkit-scrollbar-thumb {
+            background: var(--accent-pink);
+            border-radius: 10px;
+        }
+        
+        .card-content::-webkit-scrollbar-thumb:hover {
+            background: var(--dark-pink);
+        }
+    </style>
+</head>
+<body>
+    <div class="spotify-decoration decoration-1"></div>
+    <div class="spotify-decoration decoration-2"></div>
+    <div class="spotify-decoration decoration-3"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>For Jace ❤️</h1>
+            <p></p>
+        </div>
+        
+        <div class="cards-container">
+            <!-- Cards will be dynamically inserted here -->
+        </div>
+        
+        <!-- Moved navigation buttons outside the cards container -->
+        <div class="card-buttons">
+            <button class="nav-btn prev-btn" id="prevBtn">
+                <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button class="nav-btn replay-btn" id="replayBtn">
+                <i class="fas fa-redo"></i> Replay
+            </button>
+            <button class="nav-btn next-btn" id="nextBtn">
+                Next <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Card data with all content and instructions - TEXT UPDATES ONLY
+        const cards = [
+            {
+                id: 1,
+                title: "",
+                description: "Hi Jace, if you're seeing this it means were already a week strong of not hearing each other's voices or seeing each other's faces. No one to call when you get back home tired from school or for me being half asleep late at night and wait for you to arrive home HAHAHAHA.",
+                hasStartButton: true
+            },
+            {
+                id: 2,
+                title: "",
+                description: "This is a love message from me to you, Spotify wrapped style!",
+                italicText: "This is a love message from me to you, Spotify wrapped style!",
+                grayText: "This message contains audio, please allow any permissions asked.",
+                hasAudio: false
+            },
+            {
+                id: 3,
+                title: "",
+                description: "The process by which we became acquainted was unexpected. But I couldn't be more grateful to have come across you and talked to you that day.",
+                italicText: "The process by which we became acquainted was unexpected. But I couldn't be more grateful to have come across you and talked to you that day."
+            },
+            {
+                id: 4,
+                title: "Evelyn Hugo said, People think that intimacy is about sex. But intimacy is about truth. When you realize you can tell someone your truth, when you can show yourself to them, when you stand in front of them bare and their response is - 'You're safe with me'",
+                description: "I'm not sure what love is cause my mind has fooled me before, but if this is what i think it is then, i'm in love with you and I believe in us",
+                italicText: "I'm not sure what love is cause my mind has fooled me before, but if this is what i think it is then, i'm in love with you and I believe in us"
+            },
+            {
+                id: 5,
+                title: "How would I rate you?",
+                description: "",
+                ratings: [
+                    {category: "Beauty", stars: "infinite", comment: "(everybody wants to steal my girl)"},
+                    {category: "Intelligence", stars: 8, comment: "(very smart)"},
+                    {category: "Personality", stars: 8, comment: "(very warming)"},
+                    {category: "Texting", stars: 3, comment: "(can be improved)"},
+                    {category: "Stubborn", stars: 6, comment: "(gets on my nerves sometimes)"},
+                    {category: "Durability", stars: 8, comment: "(massive respect for this strong gal)"}
+                ]
+            },
+            {
+                id: 6,
+                title: "Let it be known,",
+                description: "I mean every single word I say, and every gesture I show comes from a place of honesty. Nothing was forced, nothing was said lightly. I genuinely enjoyed our time together, the conversations, the quiet moments, and everything in between. Those moments mattered to me more than I probably ever said out loud, and I carry them with me with nothing but sincerity."
+            },
+            {
+                id: 7,
+                title: "To my hardworking girl",
+                description: "—I see every quiet effort, even the ones you think disappear unnoticed. I'm proud of the strength you carry, proud that you've come this far. With every achievement, pause and claim the moment as your own, stand tall, be proud. You deserve every bit of the light you've earned. Keep going, Maganda ko. I'll always be here, cheering for you, every step of the way. I got you."
+            },
+            {
+                id: 8,
+                title: "",
+                description: "Fun fact about me: music is where I'm most expressive, in case you haven't noticed.",
+                italicText: "Fun fact about me: music is where I'm most expressive, in case you haven't noticed."
+            },
+            {
+                id: 9,
+                title: "True colors",
+                description: "As I know that \"This world makes you crazy\" And you've taken all you can bear. But I'm here for you, so \"Just call me up 'Cause I will always be there\" \n\nAnd I thank you for showing me \"your true colors,\" and \"that's why I love you\" \n\nSo \"don't be afraid to let them show, Your true colors\" because they \"...are beautiful\"",
+                audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/truecolors.mp3",
+                hasQuotes: true
+            },
+            {
+                id: 10,
+                title: "This town",
+                description: "If you still think you're not perfect, just know that, \"if the whole world was watching I'd still dance with you\" \n\nDistance? \"Drive highways and byways to be there with you\" \n\nBut I know I'm not perfect too, and so, \"Everything comes back to you\"",
+                audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/thistown.mp3",
+                hasQuotes: true
+            },
+            {
+                id: 11,
+                title: "Naiilang",
+                description: "\"Tumingin ka sa akin, gusto kong linawin\" \n\nJust know that \"Sinasabi ko nga na atin ang mundo\", and I choose you kasi \"Walang ibang tulad mo\"",
+                audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/naiilang.mp3",
+                hasQuotes: true
+            },
+            {
+                id: 12,
+                title: "",
+                description: "And ohh, I love LANY; something about their songs just speaks to me.",
+                italicText: "And ohh, I love LANY; something about their songs just speaks to me."
+            },
+            {
+                id: 13,
+                title: "Cowboy in LA",
+                description: "One thing about me is that, for you, \"I'll hold your hand, I'll hold the door, Cause that's how I was raised\" \n\n\"And all the other boys in town all look and talk the same\" You don't have to worry about me because, \"I got a different kind of heart\"",
+                audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/cowboyinla.mp3",
+                hasQuotes: true
+            },
+            {
+                id: 14,
+                title: "Anything 4 u",
+                description: "How much do I love you? Well, \"I'll catch a flight, go to the moon, Lay on the floor of your living room\" \n\nI'll be your safe space and we can \"talk about the things that make you cry\" \n\nIf you asked me too, \"I'll never walk into another bar, I'll burn these tattoos off my arms\" \n\nAnd when I love someone, \"I'll go to hell and back if I have to\" \"I'll do anything for you\" \n\n—Let me be a living proof that chivalry is not dead",
+                audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/anything4u.mp3",
+                hasQuotes: true
+            },
+            {
+                id: 15,
+                title: "A couple minutes",
+                description: "If you ever make a mistake \"Of course, I still care, Love's never wasted, When it's shared..\" \n\nWe had our time together, it was beautiful, \"And although it's over, I'll always be there\" But now I guess for awhile \"we're going back to real life\"",
+                audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/Acoupleminutes.mp3",
+                hasQuotes: true
+            },
+            {
+                id: 16,
+                title: "Godspeed",
+                description: "\"I will always love you, Let go of a prayer for you\" - I pray about you every night, I pray that you are always protected no matter the circumstances and that you bear strength to achieve your goals- \n\n\"Just a sweet word, The table is prepared for you\" because if I prayed to ask for you, its selfish, all that is in god's hands, nonetheless, this is how I love you.",
+                audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/godspeed.mp3",
+                hasQuotes: true
+            },
+            {
+                id: 17,
+                title: "",
+                description: "Im sorry I couldn't be there with you in this very special day. But,",
+                imageUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/photo_2026-02-01_16-42-09.jpg",
+                hasChoiceButtons: true
+            },
+            {
+                id: 18,
+                title: "",
+                description: "I love you and I miss you so much babyyyyyyyyyyyyy",
+                gifUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/kiss.gif",
+                showHearts: true
+            }
+        ];
+
+        // Current card index
+        let currentCardIndex = 0;
+        let noButtonClickCount = 0;
+        let audioElements = {};
+        let beautyStarsInterval;
+
+        // Initialize the cards
+        function initCards() {
+            const cardsContainer = document.querySelector('.cards-container');
+            
+            cards.forEach((card, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.className = `card ${index === 0 ? 'active' : ''}`;
+                cardElement.id = `card-${card.id}`;
+                cardElement.innerHTML = generateCardHTML(card);
+                cardsContainer.appendChild(cardElement);
+                
+                // Initialize stars for card 5
+                if (card.id === 5) {
+                    setTimeout(() => {
+                        initStarsAnimation();
+                        initBeautyStars();
+                    }, 500);
+                }
+                
+                // Initialize audio for cards 9-16
+                if (card.id >= 9 && card.id <= 16 && card.audioUrl) {
+                    setTimeout(() => {
+                        initAudioForCard(card.id, card.audioUrl);
+                    }, 300);
+                }
+            });
+            
+            // Initialize event listeners
+            initEventListeners();
+        }
+
+        // Generate HTML for each card - UPDATED to handle line breaks
+        function generateCardHTML(card) {
+            let html = '';
+            
+            if (card.title) {
+                html += `<div class="card-title">${card.title}</div>`;
+            }
+            
+            html += '<div class="card-content">';
+            
+            // Card 1 has a start button
+            if (card.id === 1 && card.hasStartButton) {
+                html += `<button class="card-start-btn" id="startBtn">Start</button>`;
+                html += `<div class="card-description" style="display: none;">${formatTextWithLineBreaks(card.description)}</div>`;
+            } 
+            // Cards with italic text
+            else if (card.italicText) {
+                html += `<div class="card-italic">${card.italicText}</div>`;
+                
+                if (card.grayText) {
+                    html += `<div class="card-gray">${card.grayText}</div>`;
+                }
+                
+                if (card.description && card.id !== 2 && card.id !== 3 && card.id !== 4 && card.id !== 8 && card.id !== 12) {
+                    html += `<div class="card-description">${formatTextWithLineBreaks(processQuotes(card.description, card.hasQuotes))}</div>`;
+                }
+            }
+            // Card with ratings
+            else if (card.ratings) {
+                html += '<div class="stars-container" id="starsContainer"></div>';
+                html += '<div class="card-description" style="width: 100%;">';
+                
+                card.ratings.forEach(rating => {
+                    html += `<div class="rating-item">`;
+                    html += `<span class="rating-category">${rating.category}:</span>`;
+                    
+                    if (rating.stars === "infinite") {
+                        html += `<span class="rating-stars">Infinite Stars</span>`;
+                        html += `<div class="beauty-stars-container" id="beautyStarsContainer"></div>`;
+                    } else {
+                        html += `<span class="rating-stars">${'★'.repeat(rating.stars)} (${rating.stars} stars)</span>`;
+                    }
+                    
+                    html += `<div class="rating-comment">${rating.comment}</div>`;
+                    html += `</div>`;
+                });
+                
+                html += '</div>';
+            }
+            // Card with image and choice buttons
+            else if (card.imageUrl) {
+                html += `<div class="card-description">${formatTextWithLineBreaks(card.description)}</div>`;
+                html += `<img src="${card.imageUrl}" alt="Special" class="card-image" onerror="this.style.display='none'">`;
+                
+                if (card.hasChoiceButtons) {
+                    html += '<div class="choice-buttons">';
+                    html += '<button class="choice-btn yes-btn" id="yesBtn">YES</button>';
+                    html += '<button class="choice-btn no-btn" id="noBtn">NO</button>';
+                    html += '</div>';
+                    html += '<div class="heart-animation" id="heartAnimation"></div>';
+                }
+            }
+            // Card with GIF
+            else if (card.gifUrl) {
+                html += `<div class="card-description">${formatTextWithLineBreaks(card.description)}</div>`;
+                html += `<img src="${card.gifUrl}" alt="Kiss" class="card-gif" onerror="this.style.display='none'">`;
+                html += '<div class="heart-animation" id="heartAnimation"></div>';
+            }
+            // Regular card
+            else {
+                html += `<div class="card-description">${formatTextWithLineBreaks(processQuotes(card.description, card.hasQuotes))}</div>`;
+            }
+            
+            // Audio player for cards with audio
+            if (card.audioUrl) {
+                html += `<div class="card-audio-player">`;
+                html += `<div class="audio-info"><i class="fas fa-music"></i> <span>Now playing: ${card.title}</span></div>`;
+                html += `<div class="audio-loading" id="audio-loading-${card.id}">Loading audio...</div>`;
+                html += `<div class="audio-error" id="audio-error-${card.id}">Audio not available</div>`;
+                html += `<audio id="audio-${card.id}" preload="auto" style="display: none;"></audio>`;
+                html += `</div>`;
+            }
+            
+            html += '</div>';
+            
+            return html;
+        }
+
+        // Process quotes for cards 9-16
+        function processQuotes(text, hasQuotes) {
+            if (!hasQuotes) return text;
+            
+            // Replace quotes with span elements for styling
+            return text.replace(/"([^"]+)"/g, '<span class="quote-text">"$1"</span>');
+        }
+
+        // Format text to preserve line breaks
+        function formatTextWithLineBreaks(text) {
+            if (!text) return '';
+            // Replace \n\n with paragraph breaks and \n with line breaks
+            return text
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>')
+                .replace(/<p>(.*?)<\/p>/g, (match, content) => {
+                    return `<p style="margin-bottom: 15px;">${content}</p>`;
+                })
+                .replace(/^(.*?)$/m, '<p>$1</p>'); // Wrap first line if no paragraphs yet
+        }
+
+        // Initialize stars animation for card 5
+        function initStarsAnimation() {
+            const starsContainer = document.querySelector('#starsContainer');
+            if (!starsContainer) return;
+            
+            // Create initial stars
+            for (let i = 0; i < 15; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.innerHTML = '★';
+                star.style.animationDelay = `${i * 0.1}s`;
+                starsContainer.appendChild(star);
+            }
+            
+            // Create background stars spawning
+            function spawnStar() {
+                const star = document.createElement('div');
+                star.className = 'star-spawn';
+                star.innerHTML = '★';
+                
+                // Random position at bottom
+                const leftPos = Math.random() * 100;
+                star.style.left = `${leftPos}%`;
+                
+                // Random size
+                const size = 0.8 + Math.random() * 0.8;
+                star.style.fontSize = `${size}rem`;
+                
+                // Random animation duration
+                const duration = 2 + Math.random() * 2;
+                star.style.animationDuration = `${duration}s`;
+                
+                document.getElementById('card-5').appendChild(star);
+                
+                // Remove star after animation
+                setTimeout(() => {
+                    if (star.parentNode) {
+                        star.parentNode.removeChild(star);
+                    }
+                }, duration * 1000);
+            }
+            
+            // Spawn stars periodically
+            setInterval(spawnStar, 300);
+        }
+
+        // Initialize infinite stars for beauty rating
+        function initBeautyStars() {
+            const beautyContainer = document.getElementById('beautyStarsContainer');
+            if (!beautyContainer) return;
+            
+            // Clear any existing interval
+            if (beautyStarsInterval) {
+                clearInterval(beautyStarsInterval);
+            }
+            
+            // Create stars continuously
+            beautyStarsInterval = setInterval(() => {
+                createBeautyStar();
+            }, 200);
+            
+            // Create initial burst of stars
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    createBeautyStar();
+                }, i * 100);
+            }
+        }
+        
+        // Create a single beauty star
+        function createBeautyStar() {
+            const beautyContainer = document.getElementById('beautyStarsContainer');
+            if (!beautyContainer) return;
+            
+            const star = document.createElement('div');
+            star.className = 'beauty-star';
+            star.innerHTML = '★';
+            
+            // Random horizontal position within container
+            const leftPos = Math.random() * 100;
+            star.style.left = `${leftPos}%`;
+            
+            // Random size
+            const size = 0.8 + Math.random() * 1.2;
+            star.style.fontSize = `${size}rem`;
+            
+            // Random animation duration
+            const duration = 3 + Math.random() * 2;
+            star.style.animationDuration = `${duration}s`;
+            
+            beautyContainer.appendChild(star);
+            
+            // Remove star after animation
+            setTimeout(() => {
+                if (star.parentNode) {
+                    star.parentNode.removeChild(star);
+                }
+            }, duration * 1000);
+        }
+
+        // Initialize audio for cards
+        function initAudioForCard(cardId, audioUrl) {
+            const audioElement = document.getElementById(`audio-${cardId}`);
+            const loadingElement = document.getElementById(`audio-loading-${cardId}`);
+            const errorElement = document.getElementById(`audio-error-${cardId}`);
+            
+            if (!audioElement) return;
+            
+            audioElements[cardId] = audioElement;
+            
+            // Set up audio loading
+            function loadAudio() {
+                if (loadingElement) loadingElement.style.display = 'block';
+                if (errorElement) errorElement.style.display = 'none';
+                
+                console.log(`Loading audio for card ${cardId}: ${audioUrl}`);
+                
+                // Set audio source
+                audioElement.src = audioUrl;
+                
+                // Set up event listeners
+                audioElement.addEventListener('canplay', function() {
+                    if (loadingElement) loadingElement.style.display = 'none';
+                    console.log(`Audio loaded for card ${cardId}`);
+                });
+                
+                audioElement.addEventListener('error', function() {
+                    if (loadingElement) loadingElement.style.display = 'none';
+                    if (errorElement) errorElement.style.display = 'block';
+                    console.log(`Audio failed to load for card ${cardId}: ${audioUrl}`);
+                    
+                    // For "This Town", try alternative if needed
+                    if (cardId === 10) {
+                        const alternativeUrl = "https://github.com/JUP1T3RZ/aces/raw/4e65a406e6e232940950ee6b89056c31f807459e/thistown.mp3";
+                        console.log(`Trying alternative URL for This Town: ${alternativeUrl}`);
+                        audioElement.src = alternativeUrl;
+                        audioElement.load();
+                    }
+                });
+                
+                // Set up observer to play when card is displayed
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                            const card = document.getElementById(`card-${cardId}`);
+                            if (card.classList.contains('active')) {
+                                setTimeout(() => {
+                                    playAudioForCard(cardId);
+                                }, 500);
+                            } else {
+                                pauseAudioForCard(cardId);
+                            }
+                        }
+                    });
+                });
+                
+                const card = document.getElementById(`card-${cardId}`);
+                observer.observe(card, { attributes: true });
+                
+                // Preload the audio
+                audioElement.load();
+            }
+            
+            // Start loading audio
+            loadAudio();
+        }
+
+        // Play audio for current card
+        function playAudioForCard(cardId) {
+            const audioElement = audioElements[cardId];
+            if (audioElement && audioElement.src) {
+                // Reset and play
+                audioElement.currentTime = 0;
+                
+                const playPromise = audioElement.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        console.log(`Audio playing for card ${cardId}`);
+                    }).catch(error => {
+                        console.log(`Auto-play failed for card ${cardId}:`, error);
+                        // Show manual play instruction
+                        const errorElement = document.getElementById(`audio-error-${cardId}`);
+                        if (errorElement) {
+                            errorElement.textContent = "Click to play audio";
+                            errorElement.style.display = 'block';
+                            errorElement.style.cursor = 'pointer';
+                            errorElement.onclick = () => {
+                                audioElement.play();
+                                errorElement.style.display = 'none';
+                            };
+                        }
+                    });
+                }
+            }
+        }
+
+        // Pause audio for card
+        function pauseAudioForCard(cardId) {
+            const audioElement = audioElements[cardId];
+            if (audioElement) {
+                audioElement.pause();
+            }
+        }
+
+        // Initialize event listeners
+        function initEventListeners() {
+            // Start button for card 1
+            const startBtn = document.getElementById('startBtn');
+            if (startBtn) {
+                startBtn.addEventListener('click', function() {
+                    const description = document.querySelector('#card-1 .card-description');
+                    if (description) {
+                        description.style.display = 'block';
+                        startBtn.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Navigation buttons
+            document.getElementById('prevBtn').addEventListener('click', showPrevCard);
+            document.getElementById('nextBtn').addEventListener('click', showNextCard);
+            document.getElementById('replayBtn').addEventListener('click', replayCard);
+            
+            // Yes/No buttons for card 17
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            
+            if (yesBtn) {
+                yesBtn.addEventListener('click', function() {
+                    // Create hearts animation
+                    createHeartsAnimation();
+                    
+                    // Show next card after delay
+                    setTimeout(() => {
+                        showNextCard();
+                    }, 2000);
+                });
+            }
+            
+            if (noBtn) {
+                noBtn.addEventListener('click', function() {
+                    noButtonClickCount++;
+                    
+                    if (noButtonClickCount === 1) {
+                        // Teleport the button
+                        teleportButton(noBtn);
+                    } else if (noButtonClickCount === 2) {
+                        // Change text
+                        noBtn.textContent = "Pls dont";
+                        teleportButton(noBtn);
+                    } else {
+                        // Keep teleporting
+                        teleportButton(noBtn);
+                    }
+                });
+            }
+        }
+
+        // Show next card with animation
+        function showNextCard() {
+            if (currentCardIndex >= cards.length - 1) return;
+            
+            const currentCard = document.getElementById(`card-${cards[currentCardIndex].id}`);
+            const nextCard = document.getElementById(`card-${cards[currentCardIndex + 1].id}`);
+            
+            // Pause audio of current card
+            if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
+                pauseAudioForCard(cards[currentCardIndex].id);
+            }
+            
+            // Stop beauty stars if leaving card 5
+            if (cards[currentCardIndex].id === 5 && beautyStarsInterval) {
+                clearInterval(beautyStarsInterval);
+            }
+            
+            // Animate cards
+            currentCard.classList.remove('active');
+            currentCard.classList.add('prev');
+            
+            nextCard.classList.remove('next');
+            nextCard.classList.add('active');
+            
+            // Update current card index
+            currentCardIndex++;
+            
+            // Initialize stars for card 5 if needed
+            if (cards[currentCardIndex].id === 5) {
+                setTimeout(() => {
+                    initStarsAnimation();
+                    initBeautyStars();
+                }, 500);
+            }
+            
+            // Play audio for cards 9-16
+            if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
+                setTimeout(() => {
+                    playAudioForCard(cards[currentCardIndex].id);
+                }, 500);
+            }
+            
+            // Show hearts for card 18 if coming from yes button
+            if (cards[currentCardIndex].id === 18) {
+                setTimeout(() => {
+                    createHeartsAnimation();
+                }, 1000);
+            }
+        }
+
+        // Show previous card with animation
+        function showPrevCard() {
+            if (currentCardIndex <= 0) return;
+            
+            const currentCard = document.getElementById(`card-${cards[currentCardIndex].id}`);
+            const prevCard = document.getElementById(`card-${cards[currentCardIndex - 1].id}`);
+            
+            // Pause audio of current card
+            if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
+                pauseAudioForCard(cards[currentCardIndex].id);
+            }
+            
+            // Stop beauty stars if leaving card 5
+            if (cards[currentCardIndex].id === 5 && beautyStarsInterval) {
+                clearInterval(beautyStarsInterval);
+            }
+            
+            // Animate cards
+            currentCard.classList.remove('active');
+            currentCard.classList.add('next');
+            
+            prevCard.classList.remove('prev');
+            prevCard.classList.add('active');
+            
+            // Update current card index
+            currentCardIndex--;
+            
+            // Initialize stars for card 5 if needed
+            if (cards[currentCardIndex].id === 5) {
+                setTimeout(() => {
+                    initStarsAnimation();
+                    initBeautyStars();
+                }, 500);
+            }
+            
+            // Play audio for cards 9-16
+            if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
+                setTimeout(() => {
+                    playAudioForCard(cards[currentCardIndex].id);
+                }, 500);
+            }
+        }
+
+        // Replay current card
+        function replayCard() {
+            const currentCard = document.getElementById(`card-${cards[currentCardIndex].id}`);
+            
+            // Reset animation
+            currentCard.classList.remove('active');
+            setTimeout(() => {
+                currentCard.classList.add('active');
+            }, 10);
+            
+            // Replay audio if applicable
+            if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
+                setTimeout(() => {
+                    playAudioForCard(cards[currentCardIndex].id);
+                }, 300);
+            }
+            
+            // Re-init stars for card 5
+            if (cards[currentCardIndex].id === 5) {
+                const starsContainer = document.querySelector('#starsContainer');
+                if (starsContainer) {
+                    starsContainer.innerHTML = '';
+                }
+                
+                // Clear beauty stars container
+                const beautyContainer = document.getElementById('beautyStarsContainer');
+                if (beautyContainer) {
+                    beautyContainer.innerHTML = '';
+                }
+                
+                // Clear interval and restart
+                if (beautyStarsInterval) {
+                    clearInterval(beautyStarsInterval);
+                }
+                
+                setTimeout(() => {
+                    initStarsAnimation();
+                    initBeautyStars();
+                }, 500);
+            }
+        }
+
+        // Teleport button (for NO button) - FIXED: Won't go out of frame
+        function teleportButton(button) {
+            const card = document.getElementById(`card-17`);
+            if (!card) return;
+            
+            // Get card dimensions
+            const cardRect = card.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+            
+            // Calculate available space within the card (with padding)
+            const padding = 20;
+            
+            // Ensure button stays within visible card area (accounting for image and text)
+            // The button should stay in the lower part of the card where there's space
+            const availableWidth = cardRect.width - buttonRect.width - (padding * 2);
+            
+            // Limit vertical movement to bottom 40% of card to avoid covering image/text
+            const verticalStart = cardRect.height * 0.6; // Start at 60% from top
+            const availableHeight = (cardRect.height * 0.4) - buttonRect.height - padding;
+            
+            if (availableWidth <= 0 || availableHeight <= 0) {
+                console.log("Not enough space for teleportation");
+                return;
+            }
+            
+            // Random position within available space
+            const randomX = Math.random() * availableWidth;
+            const randomY = verticalStart + (Math.random() * availableHeight);
+            
+            // Set position relative to the card
+            button.style.position = 'absolute';
+            button.style.left = `${randomX + padding}px`;
+            button.style.top = `${randomY}px`;
+            button.style.zIndex = '101';
+            
+            // Ensure button is visible
+            button.style.opacity = '1';
+            button.style.visibility = 'visible';
+            button.style.display = 'block';
+        }
+
+        // Create hearts animation
+        function createHeartsAnimation() {
+            const heartAnimation = document.getElementById('heartAnimation');
+            if (!heartAnimation) return;
+            
+            // Clear any existing hearts
+            heartAnimation.innerHTML = '';
+            
+            // Create hearts
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤️';
+                
+                // Random horizontal position
+                const leftPos = Math.random() * 100;
+                heart.style.left = `${leftPos}%`;
+                
+                // Random animation delay
+                heart.style.animationDelay = `${i * 0.2}s`;
+                
+                heartAnimation.appendChild(heart);
+                
+                // Create roses (every 5 hearts)
+                if (i % 5 === 0) {
+                    const rose = document.createElement('div');
+                    rose.className = 'rose';
+                    rose.innerHTML = '🌹';
+                    
+                    // Random horizontal position
+                    const roseLeftPos = Math.random() * 100;
+                    rose.style.left = `${roseLeftPos}%`;
+                    
+                    // Random animation delay
+                    rose.style.animationDelay = `${i * 0.2 + 0.5}s`;
+                    
+                    heartAnimation.appendChild(rose);
+                }
+            }
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initCards();
+            
+            // Add audio permission message
+            setTimeout(() => {
+                console.log("If audio doesn't play automatically, please allow autoplay in your browser settings.");
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
