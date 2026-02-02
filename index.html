@@ -417,6 +417,118 @@
             animation: roseFloat 4s linear forwards;
         }
 
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 0.5s;
+        }
+
+        .calendar-week {
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(to bottom right, var(--light-pink), var(--pastel-pink));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--accent-pink);
+            border: 2px solid var(--accent-pink);
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 5px;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        .calendar-title {
+            text-align: center;
+            font-weight: 600;
+            color: var(--accent-pink);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .card-note {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            text-align: center;
+            font-style: italic;
+        }
+
+        .bottom-text-container {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 1s;
+            width: 100%;
+        }
+
+        .bottom-word {
+            font-size: 2.5rem;
+            color: var(--accent-pink);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-top: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .see-next-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .see-next-btn {
+            background: linear-gradient(to right, var(--accent-pink), var(--dark-pink));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .see-next-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 105, 180, 0.5);
+        }
+
+        .see-next-btn i {
+            margin-right: 10px;
+        }
+
+        .bold-center {
+            font-weight: bold;
+            text-align: center;
+            width: 100%;
+        }
+
+        .lyrics-text {
+            font-weight: bold;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--accent-pink);
+            margin: 20px 0;
+            line-height: 1.6;
+            font-family: 'Playfair Display', serif;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -498,6 +610,28 @@
             
             .choice-buttons {
                 min-height: 50px;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .calendar-week {
+                height: 45px;
+                font-size: 0.7rem;
+            }
+            
+            .bottom-word {
+                font-size: 2rem;
+            }
+            
+            .see-next-btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .lyrics-text {
+                font-size: 1.1rem;
             }
         }
 
@@ -709,7 +843,55 @@
                 title: "",
                 description: "I love you and I miss you so much babyyyyyyyyyyyyy",
                 gifUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/kiss.gif",
-                showHearts: true
+                hasSeeNextButton: true
+            },
+            {
+                id: 19,
+                title: "The weekly project",
+                description: "The Weekly Project is something I'm doing for us across the distance. Every Friday, I send you a fact, sometimes a story, sometimes a small truth. Each piece stands on its own, and every month carries its own unique topic, but together they build into something bigger over time."
+            },
+            {
+                id: 20,
+                title: "",
+                description: "There's no rushing this. You come back every Friday for the next part, collecting the words like pieces of a puzzle. By the end of the 12th week, you'll have everything you need to piece it together and unlock the prize. That rhythm is part of what makes it special. Fridays become our moment, something steady to look forward to, even when we're far apart."
+            },
+            {
+                id: 21,
+                title: "",
+                description: "This isn't about constant messages or filling the silence. It's about intention. About giving you something thoughtful, consistently, and letting time and anticipation do their work.",
+                hasCalendar: true,
+                hasWeekButton: true
+            },
+            {
+                id: 22,
+                title: "",
+                description: "The facts I share here aren't always sweet. Some are uncomfortable, harsh truths. But I believe true love is built on truth, not on beautiful lies, and this project is grounded in that belief."
+            },
+            {
+                id: 23,
+                title: "Let's start small",
+                description: "This month's topic: A destiny",
+                audioUrl: "https://github.com/JUP1T3RZ/aces/raw/f70b36ee7055d4cb41e9f4bc03aac371cd06b783/blackparade.mp3",
+                hasContinuousAudio: true
+            },
+            {
+                id: 24,
+                title: "Week 1: Black Parade",
+                description: "I was born into this world without the touch of my father's hands. His absence shaped my entire life, and in that absence, I was raised by the world itself. Yet even from afar, he planted a seed in me, one that quietly took root over time."
+            },
+            {
+                id: 25,
+                title: "",
+                description: "'Son, when you grow up,\nwould you be the savior of the broken,\nthe beaten, and the damned?'",
+                isLyrics: true
+            },
+            {
+                id: 26,
+                title: "",
+                description: "The world carved grief, death, and suffering into me, shaping me into something meant to stand in front of others, so their fall would never mirror my own. And so comes the implication I bear: to give without expectation, even when it hurts. To offer protection knowing nothing may be returned. They will spit on you, walk over you, mistake restraint for weakness.",
+                hasBottomText: true,
+                bottomText: "This week's word",
+                bottomWord: "Many"
             }
         ];
 
@@ -718,6 +900,7 @@
         let noButtonClickCount = 0;
         let audioElements = {};
         let beautyStarsInterval;
+        let continuousAudioPlaying = null;
 
         // Initialize the cards
         function initCards() {
@@ -741,7 +924,14 @@
                 // Initialize audio for cards 9-16
                 if (card.id >= 9 && card.id <= 16 && card.audioUrl) {
                     setTimeout(() => {
-                        initAudioForCard(card.id, card.audioUrl);
+                        initAudioForCard(card.id, card.audioUrl, false);
+                    }, 300);
+                }
+                
+                // Initialize audio for card 23 (continuous)
+                if (card.id === 23 && card.audioUrl) {
+                    setTimeout(() => {
+                        initAudioForCard(card.id, card.audioUrl, true);
                     }, 300);
                 }
             });
@@ -812,19 +1002,71 @@
                     html += '<div class="heart-animation" id="heartAnimation"></div>';
                 }
             }
-            // Card with GIF
-            else if (card.gifUrl) {
+            // Card with GIF and See Next button
+            else if (card.hasSeeNextButton) {
                 html += `<div class="card-description">${formatTextWithLineBreaks(card.description)}</div>`;
-                html += `<img src="${card.gifUrl}" alt="Kiss" class="card-gif" onerror="this.style.display='none'">`;
-                html += '<div class="heart-animation" id="heartAnimation"></div>';
+                if (card.gifUrl) {
+                    html += `<img src="${card.gifUrl}" alt="Kiss" class="card-gif" onerror="this.style.display='none'">`;
+                }
+                html += '<div class="see-next-container">';
+                html += '<button class="see-next-btn" id="seeNextBtn">';
+                html += '<i class="fas fa-arrow-right"></i> See Next';
+                html += '</button>';
+                html += '</div>';
+            }
+            // Card with calendar
+            else if (card.hasCalendar) {
+                html += `<div class="card-description">${formatTextWithLineBreaks(card.description)}</div>`;
+                html += '<div class="calendar-container">';
+                html += '<div class="calendar-title">12 Weeks Calendar</div>';
+                html += '<div class="calendar-grid" id="calendarGrid">';
+                
+                for (let i = 1; i <= 12; i++) {
+                    html += `<div class="calendar-week" style="animation-delay: ${0.5 + (i * 0.1)}s;">`;
+                    html += `Week ${i}`;
+                    html += '</div>';
+                }
+                
+                html += '</div>';
+                html += '</div>';
+                
+                if (card.hasWeekButton) {
+                    html += '<div class="see-next-container">';
+                    html += '<button class="see-next-btn" id="weekBtn">';
+                    html += '<i class="fas fa-calendar-week"></i> Week 1';
+                    html += '</button>';
+                    html += '</div>';
+                }
+            }
+            // Card with continuous audio (card 23)
+            else if (card.id === 23) {
+                html += `<div class="card-description" style="font-weight: bold; text-align: center; font-size: 1.3rem;">${formatTextWithLineBreaks(card.description)}</div>`;
+                html += `<div class="card-audio-player">`;
+                html += `<div class="audio-info"><i class="fas fa-music"></i> <span>Now playing: Black Parade</span></div>`;
+                html += `<div class="audio-loading" id="audio-loading-${card.id}">Loading audio...</div>`;
+                html += `<div class="audio-error" id="audio-error-${card.id}">Audio not available</div>`;
+                html += `<audio id="audio-${card.id}" preload="auto" style="display: none;"></audio>`;
+                html += `</div>`;
+            }
+            // Card with lyrics (card 25)
+            else if (card.isLyrics) {
+                html += `<div class="lyrics-text">${formatTextWithLineBreaks(card.description)}</div>`;
+            }
+            // Card with bottom text and word
+            else if (card.hasBottomText) {
+                html += `<div class="card-description">${formatTextWithLineBreaks(card.description)}</div>`;
+                html += '<div class="bottom-text-container">';
+                html += `<div class="card-italic" style="font-size: 1.3rem; margin-bottom: 10px;">${card.bottomText}</div>`;
+                html += `<div class="bottom-word">${card.bottomWord}</div>`;
+                html += '</div>';
             }
             // Regular card
             else {
                 html += `<div class="card-description">${formatTextWithLineBreaks(processQuotes(card.description, card.hasQuotes))}</div>`;
             }
             
-            // Audio player for cards with audio
-            if (card.audioUrl) {
+            // Audio player for cards with audio (not continuous)
+            if (card.audioUrl && card.id !== 23) {
                 html += `<div class="card-audio-player">`;
                 html += `<div class="audio-info"><i class="fas fa-music"></i> <span>Now playing: ${card.title}</span></div>`;
                 html += `<div class="audio-loading" id="audio-loading-${card.id}">Loading audio...</div>`;
@@ -960,7 +1202,7 @@
         }
 
         // Initialize audio for cards
-        function initAudioForCard(cardId, audioUrl) {
+        function initAudioForCard(cardId, audioUrl, isContinuous = false) {
             const audioElement = document.getElementById(`audio-${cardId}`);
             const loadingElement = document.getElementById(`audio-loading-${cardId}`);
             const errorElement = document.getElementById(`audio-error-${cardId}`);
@@ -989,14 +1231,6 @@
                     if (loadingElement) loadingElement.style.display = 'none';
                     if (errorElement) errorElement.style.display = 'block';
                     console.log(`Audio failed to load for card ${cardId}: ${audioUrl}`);
-                    
-                    // For "This Town", try alternative if needed
-                    if (cardId === 10) {
-                        const alternativeUrl = "https://github.com/JUP1T3RZ/aces/raw/4e65a406e6e232940950ee6b89056c31f807459e/thistown.mp3";
-                        console.log(`Trying alternative URL for This Town: ${alternativeUrl}`);
-                        audioElement.src = alternativeUrl;
-                        audioElement.load();
-                    }
                 });
                 
                 // Set up observer to play when card is displayed
@@ -1006,9 +1240,10 @@
                             const card = document.getElementById(`card-${cardId}`);
                             if (card.classList.contains('active')) {
                                 setTimeout(() => {
-                                    playAudioForCard(cardId);
+                                    playAudioForCard(cardId, isContinuous);
                                 }, 500);
-                            } else {
+                            } else if (!isContinuous) {
+                                // Only pause if not continuous audio
                                 pauseAudioForCard(cardId);
                             }
                         }
@@ -1027,11 +1262,16 @@
         }
 
         // Play audio for current card
-        function playAudioForCard(cardId) {
+        function playAudioForCard(cardId, isContinuous = false) {
             const audioElement = audioElements[cardId];
             if (audioElement && audioElement.src) {
                 // Reset and play
                 audioElement.currentTime = 0;
+                
+                // If this is continuous audio, track it
+                if (isContinuous && cardId === 23) {
+                    continuousAudioPlaying = cardId;
+                }
                 
                 const playPromise = audioElement.play();
                 
@@ -1116,6 +1356,22 @@
                     }
                 });
             }
+            
+            // See Next button for card 18
+            const seeNextBtn = document.getElementById('seeNextBtn');
+            if (seeNextBtn) {
+                seeNextBtn.addEventListener('click', function() {
+                    showNextCard();
+                });
+            }
+            
+            // Week button for card 21
+            const weekBtn = document.getElementById('weekBtn');
+            if (weekBtn) {
+                weekBtn.addEventListener('click', function() {
+                    showNextCard();
+                });
+            }
         }
 
         // Show next card with animation
@@ -1125,7 +1381,7 @@
             const currentCard = document.getElementById(`card-${cards[currentCardIndex].id}`);
             const nextCard = document.getElementById(`card-${cards[currentCardIndex + 1].id}`);
             
-            // Pause audio of current card
+            // Pause audio of current card (unless it's continuous audio from card 23 onwards)
             if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
                 pauseAudioForCard(cards[currentCardIndex].id);
             }
@@ -1160,11 +1416,20 @@
                 }, 500);
             }
             
-            // Show hearts for card 18 if coming from yes button
-            if (cards[currentCardIndex].id === 18) {
+            // If continuous audio is playing (from card 23), keep it playing
+            if (continuousAudioPlaying && cards[currentCardIndex].id >= 24 && cards[currentCardIndex].id <= 26) {
+                // Ensure continuous audio keeps playing
+                const audioElement = audioElements[continuousAudioPlaying];
+                if (audioElement && audioElement.paused) {
+                    audioElement.play();
+                }
+            }
+            
+            // Play continuous audio if starting from card 23
+            if (cards[currentCardIndex].id === 23) {
                 setTimeout(() => {
-                    createHeartsAnimation();
-                }, 1000);
+                    playAudioForCard(cards[currentCardIndex].id, true);
+                }, 500);
             }
         }
 
@@ -1175,7 +1440,7 @@
             const currentCard = document.getElementById(`card-${cards[currentCardIndex].id}`);
             const prevCard = document.getElementById(`card-${cards[currentCardIndex - 1].id}`);
             
-            // Pause audio of current card
+            // Pause audio of current card (unless it's continuous audio)
             if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
                 pauseAudioForCard(cards[currentCardIndex].id);
             }
@@ -1208,6 +1473,16 @@
                 setTimeout(() => {
                     playAudioForCard(cards[currentCardIndex].id);
                 }, 500);
+            }
+            
+            // If going back to card 23 or earlier while continuous audio is playing
+            if (continuousAudioPlaying && cards[currentCardIndex].id <= 23) {
+                // Play the continuous audio if we're on card 23
+                if (cards[currentCardIndex].id === 23) {
+                    setTimeout(() => {
+                        playAudioForCard(cards[currentCardIndex].id, true);
+                    }, 500);
+                }
             }
         }
 
