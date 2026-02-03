@@ -24,6 +24,54 @@
             --shadow: 0 8px 32px rgba(255, 105, 180, 0.1);
         }
 
+        /* Black theme with red variables */
+        .black-theme {
+            --pastel-pink: #1a0a0a;
+            --dark-pink: #8b0000;
+            --light-pink: #2a0a0a;
+            --accent-pink: #ff3333;
+            --text-color: #ffffff;
+            --gray-text: #bbbbbb;
+            --card-bg: rgba(30, 10, 10, 0.95);
+            --shadow: 0 8px 32px rgba(255, 0, 0, 0.3);
+        }
+
+        /* Theme-specific variables */
+        .theme-true-colors {
+            --accent-pink: #ff6b6b;
+            --card-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        .theme-this-town {
+            --accent-pink: #8b4513;
+            --card-bg: rgba(245, 222, 179, 0.9);
+        }
+
+        .theme-naiilang {
+            --accent-pink: #ff3333;
+            --card-bg: rgba(255, 235, 235, 0.9);
+        }
+
+        .theme-cowboy-in-la {
+            --accent-pink: #228b22;
+            --card-bg: rgba(255, 240, 240, 0.9);
+        }
+
+        .theme-anything-4-u {
+            --accent-pink: #ff4500;
+            --card-bg: rgba(255, 250, 240, 0.9);
+        }
+
+        .theme-a-couple-minutes {
+            --accent-pink: #a9a9a9;
+            --card-bg: rgba(248, 248, 255, 0.9);
+        }
+
+        .theme-godspeed {
+            --accent-pink: #90ee90;
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--pastel-pink);
@@ -39,23 +87,327 @@
             justify-content: center;
             padding: 20px;
             overflow-x: hidden;
+            transition: background-color 0.8s ease, background-image 0.8s ease;
+            position: relative;
+        }
+
+        /* True Colors Theme - Rainbow */
+        .theme-true-colors .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(45deg, 
+                #ff0000, #ff9900, #ffff00, #00ff00, 
+                #00ffff, #0000ff, #9900ff, #ff00ff);
+            background-size: 400% 400%;
+            animation: rainbowShift 20s ease infinite;
+            opacity: 0.3;
+        }
+
+        /* This Town Theme - Light Brown/Tan */
+        .theme-this-town .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, 
+                #d2b48c 0%, #f5deb3 25%, #deb887 50%, #cd853f 75%, #8b4513 100%);
+            background-size: 300% 300%;
+            animation: brownShift 25s ease infinite;
+            opacity: 0.5;
+        }
+
+        /* Naiilang Theme - Red */
+        .theme-naiilang .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(45deg, 
+                #8b0000 0%, #b22222 25%, #dc143c 50%, #ff0000 75%, #ff6347 100%);
+            background-size: 400% 400%;
+            animation: redPulse 15s ease infinite;
+            opacity: 0.4;
+        }
+
+        /* Cowboy in LA Theme - Green, Red, Orange */
+        .theme-cowboy-in-la .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, 
+                #228b22 0%, #32cd32 25%, #ff4500 50%, #ff6347 75%, #ffa500 100%);
+            background-size: 300% 300%;
+            animation: cowboyRide 30s ease infinite;
+            opacity: 0.4;
+        }
+
+        /* Anything 4 U Theme - Red, Orange, Green */
+        .theme-anything-4-u .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(45deg, 
+                #ff0000 0%, #ff4500 20%, #ff8c00 40%, #32cd32 60%, #228b22 80%, #006400 100%);
+            background-size: 400% 400%;
+            animation: anythingShift 20s ease infinite;
+            opacity: 0.4;
+        }
+
+        /* A Couple Minutes Theme - Grey with Warm Pink */
+        .theme-a-couple-minutes .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, 
+                #808080 0%, #a9a9a9 25%, #c0c0c0 50%, #d3d3d3 75%, #ffb6c1 100%);
+            background-size: 300% 300%;
+            animation: coupleMinutes 25s ease infinite;
+            opacity: 0.5;
+        }
+
+        /* Godspeed Theme - White with Light Green */
+        .theme-godspeed .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(45deg, 
+                #ffffff 0%, #f8f8f8 25%, #f0f0f0 50%, #e8e8e8 75%, #90ee90 100%);
+            background-size: 400% 400%;
+            animation: godspeedFloat 25s ease infinite;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes rainbowShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes brownShift {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        @keyframes redPulse {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; filter: brightness(1.1); }
+            100% { background-position: 0% 0%; }
+        }
+
+        @keyframes cowboyRide {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        @keyframes anythingShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes coupleMinutes {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        @keyframes godspeedFloat {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* Firework effect animations */
+        @keyframes firework {
+            0% { 
+                transform: translate(var(--x), var(--initialY));
+                width: var(--initialSize);
+                opacity: 1;
+            }
+            50% { 
+                width: 0.5vmin;
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(var(--x), var(--finalY));
+                opacity: 0;
+            }
+        }
+
+        @keyframes fireworkParticle {
+            0% { 
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            50% { 
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(var(--angle), var(--distance));
+                opacity: 0;
+            }
+        }
+
+        @keyframes specialTextGlow {
+            0%, 100% { 
+                color: #ff3333;
+                text-shadow: 
+                    0 0 10px #ff3333,
+                    0 0 20px #ff3333,
+                    0 0 30px #ff3333;
+            }
+            25% { 
+                color: #ff9933;
+                text-shadow: 
+                    0 0 10px #ff9933,
+                    0 0 20px #ff9933,
+                    0 0 30px #ff9933;
+            }
+            50% { 
+                color: #ffff33;
+                text-shadow: 
+                    0 0 10px #ffff33,
+                    0 0 20px #ffff33,
+                    0 0 30px #ffff33;
+            }
+            75% { 
+                color: #33ff33;
+                text-shadow: 
+                    0 0 10px #33ff33,
+                    0 0 20px #33ff33,
+                    0 0 30px #33ff33;
+            }
+        }
+
+        .special-text-container {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .special-text {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ff3333;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: specialTextGlow 3s infinite alternate;
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: inline-block;
+            position: relative;
+            z-index: 3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .ps-text {
+            font-size: 1rem;
+            color: var(--gray-text);
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px 15px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .firework-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .firework {
+            position: absolute;
+            width: 5vmin;
+            aspect-ratio: 1;
+            background: 
+                radial-gradient(circle, #ff3333 0.2vmin, #0000 0) 50% 0,
+                radial-gradient(circle, #ff9933 0.2vmin, #0000 0) 100% 50%,
+                radial-gradient(circle, #ffff33 0.2vmin, #0000 0) 50% 100%,
+                radial-gradient(circle, #33ff33 0.2vmin, #0000 0) 0 50%,
+                radial-gradient(circle, #3399ff 0.2vmin, #0000 0) 80% 90%,
+                radial-gradient(circle, #9933ff 0.2vmin, #0000 0) 95% 16%,
+                radial-gradient(circle, #ff33cc 0.2vmin, #0000 0) 20% 60%,
+                radial-gradient(circle, #33ffcc 0.2vmin, #0000 0) 50% 50%;
+            background-size: 0.5vmin 0.5vmin;
+            background-repeat: no-repeat;
+            animation: firework 2s infinite;
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 0.5vmin;
+            height: 0.5vmin;
+            border-radius: 50%;
+            animation: fireworkParticle 1.5s infinite;
+        }
+
+        .black-theme body {
+            background-color: #000000;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.4) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 51, 51, 0.3) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(100, 0, 0, 0.5) 0%, transparent 30%);
         }
 
         .container {
             width: 100%;
             max-width: 500px;
             position: relative;
+            z-index: 1;
         }
 
         .header {
             text-align: center;
             margin-bottom: 30px;
             padding: 15px;
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 20px;
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow);
             border: 2px solid var(--light-pink);
+            transition: all 0.8s ease;
+        }
+
+        .black-theme .header {
+            background: rgba(30, 10, 10, 0.85);
+            border: 2px solid var(--accent-pink);
         }
 
         .header h1 {
@@ -91,13 +443,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.8s, background-color 0.8s ease, box-shadow 0.8s ease;
             transform-style: preserve-3d;
             backface-visibility: hidden;
             border: 2px solid var(--light-pink);
             overflow: hidden;
             opacity: 0;
             transform: translateX(100%) rotateY(20deg);
+        }
+
+        .black-theme .card {
+            border: 2px solid var(--accent-pink);
         }
 
         .card.active {
@@ -207,11 +563,21 @@
             box-shadow: 0 4px 8px rgba(255, 105, 180, 0.2);
         }
 
+        .black-theme .nav-btn {
+            background-color: #2a0a0a;
+            color: var(--accent-pink);
+            box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+        }
+
         .nav-btn:hover {
             background-color: var(--accent-pink);
             color: white;
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(255, 105, 180, 0.3);
+        }
+
+        .black-theme .nav-btn:hover {
+            box-shadow: 0 6px 12px rgba(255, 0, 0, 0.4);
         }
 
         .nav-btn:active {
@@ -236,9 +602,17 @@
             box-shadow: 0 6px 15px rgba(255, 105, 180, 0.4);
         }
 
+        .black-theme .card-start-btn {
+            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
+        }
+
         .card-start-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(255, 105, 180, 0.5);
+        }
+
+        .black-theme .card-start-btn:hover {
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.6);
         }
 
         .card-audio-player {
@@ -382,6 +756,10 @@
             z-index: 101;
         }
 
+        .black-theme .yes-btn {
+            background: linear-gradient(to right, #8b0000, #ff3333);
+        }
+
         .no-btn {
             background: linear-gradient(to right, #cccccc, #aaaaaa);
             color: white;
@@ -445,6 +823,11 @@
             animation: fadeIn 0.5s forwards;
         }
 
+        .black-theme .calendar-week {
+            background: linear-gradient(to bottom right, #2a0a0a, #1a0a0a);
+            border: 2px solid var(--accent-pink);
+        }
+
         .calendar-title {
             text-align: center;
             font-weight: 600;
@@ -503,9 +886,17 @@
             justify-content: center;
         }
 
+        .black-theme .see-next-btn {
+            box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
+        }
+
         .see-next-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(255, 105, 180, 0.5);
+        }
+
+        .black-theme .see-next-btn:hover {
+            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.6);
         }
 
         .see-next-btn i {
@@ -633,16 +1024,22 @@
             .lyrics-text {
                 font-size: 1.1rem;
             }
+            
+            .special-text {
+                font-size: 1.5rem;
+                padding: 8px 15px;
+            }
         }
 
         /* Spotify Wrapped style decorations */
         .spotify-decoration {
-            position: absolute;
+            position: fixed;
             width: 100px;
             height: 100px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             z-index: -1;
+            transition: background 0.8s ease;
         }
 
         .decoration-1 {
@@ -668,6 +1065,18 @@
             height: 60px;
             background: radial-gradient(circle, rgba(255, 214, 231, 0.6) 0%, transparent 70%);
         }
+
+        .black-theme .decoration-1 {
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.3) 0%, transparent 70%);
+        }
+
+        .black-theme .decoration-2 {
+            background: radial-gradient(circle, rgba(255, 51, 51, 0.2) 0%, transparent 70%);
+        }
+
+        .black-theme .decoration-3 {
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.4) 0%, transparent 70%);
+        }
         
         /* Scrollbar styling */
         .card-content::-webkit-scrollbar {
@@ -687,9 +1096,283 @@
         .card-content::-webkit-scrollbar-thumb:hover {
             background: var(--dark-pink);
         }
+
+        .black-theme .card-content::-webkit-scrollbar-track {
+            background: rgba(139, 0, 0, 0.2);
+        }
+        
+        .black-theme .card-content::-webkit-scrollbar-thumb {
+            background: var(--accent-pink);
+        }
+        
+        .black-theme .card-content::-webkit-scrollbar-thumb:hover {
+            background: #ff6666;
+        }
+        
+        /* Envelope Styles for Card 26 */
+        .envelope-container-final {
+            position: relative;
+            width: 280px;
+            height: 190px;
+            margin: 25px auto;
+            perspective: 1000px;
+        }
+        
+        .envelope-final {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            cursor: pointer;
+        }
+        
+        .envelope-back-final {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #e91e63;
+            border-radius: 8px 8px 0 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .heart-pattern-final {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            background-image: 
+                radial-gradient(circle at 20% 30%, #ff4081 3px, transparent 4px),
+                radial-gradient(circle at 80% 40%, #ff4081 3px, transparent 4px),
+                radial-gradient(circle at 40% 70%, #ff4081 3px, transparent 4px),
+                radial-gradient(circle at 60% 20%, #ff4081 3px, transparent 4px);
+            background-size: 50px 50px;
+        }
+        
+        .envelope-front-final {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #f06292;
+            border-radius: 8px;
+            transform-origin: bottom;
+            transition: transform 1s 0.3s;
+            z-index: 3;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+        }
+        
+        .envelope-flap-final {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 95px solid #ec407a;
+            top: 0;
+            left: 0;
+            transform-origin: top;
+            transition: transform 1s 0.1s;
+            z-index: 4;
+            filter: drop-shadow(0 -3px 5px rgba(0, 0, 0, 0.2));
+        }
+        
+        .letter-final {
+            position: absolute;
+            width: 90%;
+            height: 85%;
+            background: linear-gradient(to bottom, #fff5f7, #ffeef2);
+            border-radius: 5px;
+            left: 5%;
+            top: 8%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            transform: translateY(0);
+            transition: transform 1s 0.6s, box-shadow 0.5s, z-index 0s 0.6s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .letter-final::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 35px;
+            height: 35px;
+            background: #ffcdd2;
+            clip-path: polygon(50% 15%, 80% 10%, 100% 35%, 50% 85%, 0 35%, 20% 10%);
+            opacity: 0.5;
+        }
+        
+        .letter-content-final {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .secret-word-final {
+            font-size: 3.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #d81b60, #880e4f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transform: scale(0.8);
+            opacity: 0;
+            transition: transform 0.8s 1.2s, opacity 0.8s 1.2s;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .letter-lines-final {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                #f8bbd0 21px
+            );
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+        .envelope-final.open .envelope-flap-final {
+            transform: rotateX(180deg);
+        }
+        
+        .envelope-final.open .envelope-front-final {
+            transform: rotateX(-180deg);
+        }
+        
+        .envelope-final.open .letter-final {
+            transform: translateY(0);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            z-index: 5;
+        }
+        
+        .envelope-final.open .secret-word-final {
+            transform: scale(1);
+            opacity: 1;
+        }
+        
+        .flap-heart-final {
+            position: absolute;
+            top: -65px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffebee;
+            font-size: 2.2rem;
+            z-index: 5;
+            transition: transform 0.8s 0.1s;
+        }
+        
+        .envelope-final.open .flap-heart-final {
+            transform: translateX(-50%) rotateY(720deg) scale(1.2);
+        }
+        
+        .reveal-btn-final {
+            margin: 20px auto;
+            padding: 14px 35px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(to right, #d81b60, #880e4f);
+            color: white;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(136, 14, 79, 0.4);
+        }
+        
+        .black-theme .reveal-btn-final {
+            background: linear-gradient(to right, #8b0000, #ff3333);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
+        }
+        
+        .reveal-btn-final:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(136, 14, 79, 0.5);
+        }
+        
+        .black-theme .reveal-btn-final:hover {
+            box-shadow: 0 12px 25px rgba(255, 0, 0, 0.5);
+        }
+        
+        .reveal-btn-final:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            background: linear-gradient(to right, #999, #777);
+        }
+        
+        @keyframes wordGlowFinal {
+            0% { text-shadow: 0 0 10px rgba(216, 27, 96, 0.5); }
+            50% { text-shadow: 0 0 25px rgba(216, 27, 96, 0.8); }
+            100% { text-shadow: 0 0 10px rgba(216, 27, 96, 0.5); }
+        }
+        
+        .envelope-final.open .secret-word-final {
+            animation: wordGlowFinal 2s infinite 1.5s;
+        }
+        
+        @keyframes revealPulseFinal {
+            0% { box-shadow: 0 0 0 0 rgba(216, 27, 96, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(216, 27, 96, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(216, 27, 96, 0); }
+        }
+        
+        .reveal-effect-final {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            animation: revealPulseFinal 1.5s;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 600px) {
+            .envelope-container-final {
+                width: 240px;
+                height: 160px;
+                margin: 20px auto;
+            }
+            
+            .envelope-flap-final {
+                border-left: 120px solid transparent;
+                border-right: 120px solid transparent;
+                border-top: 80px solid #ec407a;
+            }
+            
+            .secret-word-final {
+                font-size: 2.8rem;
+            }
+            
+            .flap-heart-final {
+                top: -55px;
+                font-size: 1.8rem;
+            }
+            
+            .reveal-btn-final {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="dynamic-background"></div>
     <div class="spotify-decoration decoration-1"></div>
     <div class="spotify-decoration decoration-2"></div>
     <div class="spotify-decoration decoration-3"></div>
@@ -781,21 +1464,24 @@
                 title: "True colors",
                 description: "As I know that \"This world makes you crazy\" And you've taken all you can bear. But I'm here for you, so \"Just call me up 'Cause I will always be there\" \n\nAnd I thank you for showing me \"your true colors,\" and \"that's why I love you\" \n\nSo \"don't be afraid to let them show, Your true colors\" because they \"...are beautiful\"",
                 audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/truecolors.mp3",
-                hasQuotes: true
+                hasQuotes: true,
+                theme: "theme-true-colors"
             },
             {
                 id: 10,
                 title: "This town",
                 description: "If you still think you're not perfect, just know that, \"if the whole world was watching I'd still dance with you\" \n\nDistance? \"Drive highways and byways to be there with you\" \n\nBut I know I'm not perfect too, and so, \"Everything comes back to you\"",
                 audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/thistown.mp3",
-                hasQuotes: true
+                hasQuotes: true,
+                theme: "theme-this-town"
             },
             {
                 id: 11,
                 title: "Naiilang",
                 description: "\"Tumingin ka sa akin, gusto kong linawin\" \n\nJust know that \"Sinasabi ko nga na atin ang mundo\", and I choose you kasi \"Walang ibang tulad mo\"",
                 audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/naiilang.mp3",
-                hasQuotes: true
+                hasQuotes: true,
+                theme: "theme-naiilang"
             },
             {
                 id: 12,
@@ -808,28 +1494,32 @@
                 title: "Cowboy in LA",
                 description: "One thing about me is that, for you, \"I'll hold your hand, I'll hold the door, Cause that's how I was raised\" \n\n\"And all the other boys in town all look and talk the same\" You don't have to worry about me because, \"I got a different kind of heart\"",
                 audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/cowboyinla.mp3",
-                hasQuotes: true
+                hasQuotes: true,
+                theme: "theme-cowboy-in-la"
             },
             {
                 id: 14,
                 title: "Anything 4 u",
                 description: "How much do I love you? Well, \"I'll catch a flight, go to the moon, Lay on the floor of your living room\" \n\nI'll be your safe space and we can \"talk about the things that make you cry\" \n\nIf you asked me too, \"I'll never walk into another bar, I'll burn these tattoos off my arms\" \n\nAnd when I love someone, \"I'll go to hell and back if I have to\" \"I'll do anything for you\" \n\n—Let me be a living proof that chivalry is not dead",
                 audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/anything4u.mp3",
-                hasQuotes: true
+                hasQuotes: true,
+                theme: "theme-anything-4-u"
             },
             {
                 id: 15,
                 title: "A couple minutes",
                 description: "If you ever make a mistake \"Of course, I still care, Love's never wasted, When it's shared..\" \n\nWe had our time together, it was beautiful, \"And although it's over, I'll always be there\" But now I guess for awhile \"we're going back to real life\"",
                 audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/Acoupleminutes.mp3",
-                hasQuotes: true
+                hasQuotes: true,
+                theme: "theme-a-couple-minutes"
             },
             {
                 id: 16,
                 title: "Godspeed",
                 description: "\"I will always love you, Let go of a prayer for you\" - I pray about you every night, I pray that you are always protected no matter the circumstances and that you bear strength to achieve your goals- \n\n\"Just a sweet word, The table is prepared for you\" because if I prayed to ask for you, its selfish, all that is in god's hands, nonetheless, this is how I love you.",
                 audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/godspeed.mp3",
-                hasQuotes: true
+                hasQuotes: true,
+                theme: "theme-godspeed"
             },
             {
                 id: 17,
@@ -841,6 +1531,8 @@
             {
                 id: 18,
                 title: "",
+                specialText: "You officially have a Valentine's!",
+                psText: "P.S: its illegal to have 2 valentine's",
                 description: "I love you and I miss you so much babyyyyyyyyyyyyy",
                 gifUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/kiss.gif",
                 hasSeeNextButton: true
@@ -889,9 +1581,7 @@
                 id: 26,
                 title: "",
                 description: "The world carved grief, death, and suffering into me, shaping me into something meant to stand in front of others, so their fall would never mirror my own. And so comes the implication I bear: to give without expectation, even when it hurts. To offer protection knowing nothing may be returned. They will spit on you, walk over you, mistake restraint for weakness.",
-                hasBottomText: true,
-                bottomText: "This week's word",
-                bottomWord: "Many"
+                hasEnvelopeReveal: true
             }
         ];
 
@@ -901,6 +1591,7 @@
         let audioElements = {};
         let beautyStarsInterval;
         let continuousAudioPlaying = null;
+        let fireworkInterval = null;
 
         // Initialize the cards
         function initCards() {
@@ -932,6 +1623,13 @@
                 if (card.id === 23 && card.audioUrl) {
                     setTimeout(() => {
                         initAudioForCard(card.id, card.audioUrl, true);
+                    }, 300);
+                }
+                
+                // Initialize envelope for card 26
+                if (card.id === 26 && card.hasEnvelopeReveal) {
+                    setTimeout(() => {
+                        initEnvelopeForCard();
                     }, 300);
                 }
             });
@@ -1002,12 +1700,31 @@
                     html += '<div class="heart-animation" id="heartAnimation"></div>';
                 }
             }
-            // Card with GIF and See Next button
+            // Card with GIF and See Next button (updated for card 18)
             else if (card.hasSeeNextButton) {
-                html += `<div class="card-description">${formatTextWithLineBreaks(card.description)}</div>`;
+                // Add firework container
+                html += '<div class="firework-container" id="fireworkContainer"></div>';
+                
+                // Special text and PS text for card 18
+                if (card.specialText) {
+                    html += '<div class="special-text-container">';
+                    html += `<div class="special-text">${card.specialText}</div>`;
+                    if (card.psText) {
+                        html += `<div class="ps-text">${card.psText}</div>`;
+                    }
+                    html += '</div>';
+                }
+                
+                // GIF
                 if (card.gifUrl) {
                     html += `<img src="${card.gifUrl}" alt="Kiss" class="card-gif" onerror="this.style.display='none'">`;
                 }
+                
+                // Description text
+                if (card.description) {
+                    html += `<div class="card-description" style="text-align: center; margin-top: 20px;">${formatTextWithLineBreaks(card.description)}</div>`;
+                }
+                
                 html += '<div class="see-next-container">';
                 html += '<button class="see-next-btn" id="seeNextBtn">';
                 html += '<i class="fas fa-arrow-right"></i> See Next';
@@ -1052,12 +1769,40 @@
             else if (card.isLyrics) {
                 html += `<div class="lyrics-text">${formatTextWithLineBreaks(card.description)}</div>`;
             }
-            // Card with bottom text and word
-            else if (card.hasBottomText) {
+            // Card with envelope reveal (card 26)
+            else if (card.hasEnvelopeReveal) {
                 html += `<div class="card-description">${formatTextWithLineBreaks(card.description)}</div>`;
                 html += '<div class="bottom-text-container">';
-                html += `<div class="card-italic" style="font-size: 1.3rem; margin-bottom: 10px;">${card.bottomText}</div>`;
-                html += `<div class="bottom-word">${card.bottomWord}</div>`;
+                html += `<div class="card-italic" style="font-size: 1.3rem; margin-bottom: 10px;">This week's word:</div>`;
+                
+                // Envelope reveal section
+                html += `
+                <div class="envelope-container-final">
+                    <div class="envelope-final" id="envelope-final">
+                        <div class="envelope-back-final">
+                            <div class="heart-pattern-final"></div>
+                        </div>
+                        
+                        <div class="letter-final">
+                            <div class="letter-lines-final"></div>
+                            <div class="letter-content-final">
+                                <div class="secret-word-final" id="secret-word-final">MANY</div>
+                            </div>
+                        </div>
+                        
+                        <div class="envelope-front-final"></div>
+                        
+                        <div class="envelope-flap-final">
+                            <div class="flap-heart-final"><i class="fas fa-heart"></i></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="reveal-btn-final" id="reveal-btn-final">
+                    <i class="fas fa-heart"></i> Reveal Word
+                </button>
+                `;
+                
                 html += '</div>';
             }
             // Regular card
@@ -1099,6 +1844,77 @@
                     return `<p style="margin-bottom: 15px;">${content}</p>`;
                 })
                 .replace(/^(.*?)$/m, '<p>$1</p>'); // Wrap first line if no paragraphs yet
+        }
+
+        // Initialize envelope for card 26
+        function initEnvelopeForCard() {
+            const envelope = document.getElementById('envelope-final');
+            const revealBtn = document.getElementById('reveal-btn-final');
+            const secretWord = document.getElementById('secret-word-final');
+            
+            let isOpen = false;
+            
+            // Open envelope function
+            revealBtn.addEventListener('click', function() {
+                if (isOpen) return;
+                
+                // Add the 'open' class to trigger the animation
+                envelope.classList.add('open');
+                isOpen = true;
+                
+                // Update button
+                revealBtn.innerHTML = '<i class="fas fa-check"></i> Revealed!';
+                revealBtn.disabled = true;
+                
+                // Add a reveal effect to the letter
+                const revealEffect = document.createElement('div');
+                revealEffect.className = 'reveal-effect-final';
+                document.querySelector('.letter-final').appendChild(revealEffect);
+                
+                // Remove effect after animation completes
+                setTimeout(() => {
+                    revealEffect.remove();
+                }, 1500);
+                
+                // Add a subtle bounce to the envelope when opening
+                envelope.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    envelope.style.transform = 'scale(1)';
+                }, 200);
+            });
+            
+            // Optional: Click on the envelope to open it too
+            envelope.addEventListener('click', function() {
+                if (!isOpen) {
+                    revealBtn.click();
+                }
+            });
+            
+            // Add a subtle hover effect to the envelope before opening
+            envelope.addEventListener('mouseenter', function() {
+                if (!isOpen) {
+                    envelope.style.transform = 'scale(1.02)';
+                }
+            });
+            
+            envelope.addEventListener('mouseleave', function() {
+                if (!isOpen) {
+                    envelope.style.transform = '';
+                }
+            });
+            
+            // Add a subtle heartbeat effect to the flap heart before opening
+            const flapHeart = document.querySelector('.flap-heart-final');
+            setInterval(() => {
+                if (!isOpen) {
+                    flapHeart.style.transform = 'translateX(-50%) scale(1.1)';
+                    setTimeout(() => {
+                        if (!isOpen) {
+                            flapHeart.style.transform = 'translateX(-50%) scale(1)';
+                        }
+                    }, 300);
+                }
+            }, 2000);
         }
 
         // Initialize stars animation for card 5
@@ -1304,6 +2120,143 @@
             }
         }
 
+        // Toggle black theme
+        function toggleBlackTheme(enable) {
+            if (enable) {
+                document.body.classList.add('black-theme');
+                document.body.classList.remove(
+                    'theme-true-colors', 'theme-this-town', 'theme-naiilang',
+                    'theme-cowboy-in-la', 'theme-anything-4-u', 
+                    'theme-a-couple-minutes', 'theme-godspeed'
+                );
+            } else {
+                document.body.classList.remove('black-theme');
+            }
+        }
+
+        // Set dynamic theme for music cards
+        function setDynamicTheme(cardId) {
+            const card = cards.find(c => c.id === cardId);
+            
+            // Remove all theme classes
+            document.body.classList.remove(
+                'theme-true-colors', 'theme-this-town', 'theme-naiilang',
+                'theme-cowboy-in-la', 'theme-anything-4-u', 
+                'theme-a-couple-minutes', 'theme-godspeed',
+                'black-theme'
+            );
+            
+            // Apply specific theme if card has one (cards 9-16)
+            if (card && card.theme && cardId >= 9 && cardId <= 16) {
+                document.body.classList.add(card.theme);
+            }
+            // Apply black theme for cards 23-26
+            else if (cardId >= 23) {
+                document.body.classList.add('black-theme');
+            }
+        }
+
+        // Initialize firework effect for card 18
+        function initFireworkEffect() {
+            const fireworkContainer = document.getElementById('fireworkContainer');
+            if (!fireworkContainer) return;
+            
+            // Clear existing fireworks
+            fireworkContainer.innerHTML = '';
+            
+            // Create multiple fireworks
+            function createFirework() {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                
+                // Random position
+                const x = Math.random() * 80 + 10; // 10% to 90%
+                const y = Math.random() * 50 + 10; // 10% to 60%
+                const initialY = 100;
+                const finalY = -100;
+                const initialSize = Math.random() * 8 + 3;
+                
+                firework.style.setProperty('--x', `${x}%`);
+                firework.style.setProperty('--initialY', `${initialY}%`);
+                firework.style.setProperty('--finalY', `${finalY}%`);
+                firework.style.setProperty('--initialSize', `${initialSize}vmin`);
+                firework.style.left = `${x}%`;
+                firework.style.top = `${y}%`;
+                firework.style.animationDuration = `${Math.random() * 1.5 + 1}s`;
+                
+                fireworkContainer.appendChild(firework);
+                
+                // Create particles
+                const particleCount = 12;
+                for (let i = 0; i < particleCount; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.className = 'firework-particle';
+                        
+                        // Random colors
+                        const colors = ['#ff3333', '#ff9933', '#ffff33', '#33ff33', '#3399ff', '#9933ff', '#ff33cc', '#33ffcc'];
+                        const color = colors[Math.floor(Math.random() * colors.length)];
+                        
+                        particle.style.backgroundColor = color;
+                        particle.style.left = `${x}%`;
+                        particle.style.top = `${y}%`;
+                        
+                        // Random angle and distance
+                        const angle = Math.random() * 360;
+                        const distance = Math.random() * 30 + 20;
+                        particle.style.setProperty('--angle', `${Math.cos(angle * Math.PI / 180) * distance}%`);
+                        particle.style.setProperty('--distance', `${Math.sin(angle * Math.PI / 180) * distance}%`);
+                        particle.style.animationDelay = `${Math.random() * 0.5}s`;
+                        
+                        fireworkContainer.appendChild(particle);
+                        
+                        // Remove particle after animation
+                        setTimeout(() => {
+                            if (particle.parentNode) {
+                                particle.parentNode.removeChild(particle);
+                            }
+                        }, 1500);
+                    }, i * 50);
+                }
+                
+                // Remove firework after animation
+                setTimeout(() => {
+                    if (firework.parentNode) {
+                        firework.parentNode.removeChild(firework);
+                    }
+                }, 2000);
+            }
+            
+            // Create initial burst of fireworks
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework();
+                }, i * 300);
+            }
+            
+            // Create continuous fireworks
+            if (fireworkInterval) {
+                clearInterval(fireworkInterval);
+            }
+            
+            fireworkInterval = setInterval(() => {
+                createFirework();
+            }, 800);
+        }
+
+        // Stop firework effect
+        function stopFireworkEffect() {
+            if (fireworkInterval) {
+                clearInterval(fireworkInterval);
+                fireworkInterval = null;
+            }
+            
+            const fireworkContainer = document.getElementById('fireworkContainer');
+            if (fireworkContainer) {
+                fireworkContainer.innerHTML = '';
+            }
+        }
+
         // Initialize event listeners
         function initEventListeners() {
             // Start button for card 1
@@ -1381,6 +2334,14 @@
             const currentCard = document.getElementById(`card-${cards[currentCardIndex].id}`);
             const nextCard = document.getElementById(`card-${cards[currentCardIndex + 1].id}`);
             
+            // Stop fireworks if leaving card 18
+            if (cards[currentCardIndex].id === 18) {
+                stopFireworkEffect();
+            }
+            
+            // Set dynamic theme for next card
+            setDynamicTheme(cards[currentCardIndex + 1].id);
+            
             // Pause audio of current card (unless it's continuous audio from card 23 onwards)
             if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
                 pauseAudioForCard(cards[currentCardIndex].id);
@@ -1406,6 +2367,13 @@
                 setTimeout(() => {
                     initStarsAnimation();
                     initBeautyStars();
+                }, 500);
+            }
+            
+            // Initialize fireworks for card 18
+            if (cards[currentCardIndex].id === 18) {
+                setTimeout(() => {
+                    initFireworkEffect();
                 }, 500);
             }
             
@@ -1440,6 +2408,14 @@
             const currentCard = document.getElementById(`card-${cards[currentCardIndex].id}`);
             const prevCard = document.getElementById(`card-${cards[currentCardIndex - 1].id}`);
             
+            // Stop fireworks if leaving card 18
+            if (cards[currentCardIndex].id === 18) {
+                stopFireworkEffect();
+            }
+            
+            // Set dynamic theme for previous card
+            setDynamicTheme(cards[currentCardIndex - 1].id);
+            
             // Pause audio of current card (unless it's continuous audio)
             if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
                 pauseAudioForCard(cards[currentCardIndex].id);
@@ -1468,6 +2444,13 @@
                 }, 500);
             }
             
+            // Initialize fireworks for card 18
+            if (cards[currentCardIndex].id === 18) {
+                setTimeout(() => {
+                    initFireworkEffect();
+                }, 500);
+            }
+            
             // Play audio for cards 9-16
             if (cards[currentCardIndex].id >= 9 && cards[currentCardIndex].id <= 16) {
                 setTimeout(() => {
@@ -1489,6 +2472,17 @@
         // Replay current card
         function replayCard() {
             const currentCard = document.getElementById(`card-${cards[currentCardIndex].id}`);
+            
+            // Set theme based on current card
+            setDynamicTheme(cards[currentCardIndex].id);
+            
+            // Re-init fireworks for card 18
+            if (cards[currentCardIndex].id === 18) {
+                stopFireworkEffect();
+                setTimeout(() => {
+                    initFireworkEffect();
+                }, 300);
+            }
             
             // Reset animation
             currentCard.classList.remove('active');
@@ -1525,6 +2519,24 @@
                     initStarsAnimation();
                     initBeautyStars();
                 }, 500);
+            }
+            
+            // Re-init envelope for card 26
+            if (cards[currentCardIndex].id === 26) {
+                const envelope = document.getElementById('envelope-final');
+                const revealBtn = document.getElementById('reveal-btn-final');
+                
+                if (envelope && envelope.classList.contains('open')) {
+                    // Reset envelope to closed state
+                    envelope.classList.remove('open');
+                    envelope.style.transform = '';
+                    
+                    // Reset button
+                    if (revealBtn) {
+                        revealBtn.innerHTML = '<i class="fas fa-heart"></i> Reveal Word';
+                        revealBtn.disabled = false;
+                    }
+                }
             }
         }
 
@@ -1595,17 +2607,17 @@
                 // Create roses (every 5 hearts)
                 if (i % 5 === 0) {
                     const rose = document.createElement('div');
-                    rose.className = 'rose';
-                    rose.innerHTML = '🌹';
-                    
-                    // Random horizontal position
-                    const roseLeftPos = Math.random() * 100;
-                    rose.style.left = `${roseLeftPos}%`;
-                    
-                    // Random animation delay
-                    rose.style.animationDelay = `${i * 0.2 + 0.5}s`;
-                    
-                    heartAnimation.appendChild(rose);
+                        rose.className = 'rose';
+                        rose.innerHTML = '🌹';
+                        
+                        // Random horizontal position
+                        const roseLeftPos = Math.random() * 100;
+                        rose.style.left = `${roseLeftPos}%`;
+                        
+                        // Random animation delay
+                        rose.style.animationDelay = `${i * 0.2 + 0.5}s`;
+                        
+                        heartAnimation.appendChild(rose);
                 }
             }
         }
@@ -1613,6 +2625,9 @@
         // Initialize the app when DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             initCards();
+            
+            // Set initial theme (normal, not black)
+            setDynamicTheme(1);
             
             // Add audio permission message
             setTimeout(() => {
