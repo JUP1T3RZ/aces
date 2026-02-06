@@ -72,6 +72,30 @@
             --card-bg: rgba(255, 255, 255, 0.95);
         }
 
+        /* A Prayer Theme - Pure White */
+        .theme-a-prayer {
+            --pastel-pink: #ffffff;
+            --dark-pink: #ffffff;
+            --light-pink: #ffffff;
+            --accent-pink: #ff3333;
+            --text-color: #333333;
+            --gray-text: #666666;
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* White theme for cards 24-26 */
+        .theme-white-continue {
+            --pastel-pink: #ffffff;
+            --dark-pink: #ffffff;
+            --light-pink: #ffffff;
+            --accent-pink: #ff3333;
+            --text-color: #333333;
+            --gray-text: #666666;
+            --card-bg: rgba(255, 255, 255, 0.98);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--pastel-pink);
@@ -87,7 +111,7 @@
             justify-content: center;
             padding: 20px;
             overflow-x: hidden;
-            transition: background-color 0.8s ease, background-image 0.8s ease;
+            transition: background-color 1.5s ease, background-image 1.5s ease;
             position: relative;
         }
 
@@ -197,6 +221,22 @@
             opacity: 0.7;
         }
 
+        /* A Prayer Theme - Pure White with subtle gradient animation */
+        .theme-a-prayer .dynamic-background,
+        .theme-white-continue .dynamic-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(135deg, 
+                #ffffff 0%, #f8f8f8 25%, #f0f0f0 50%, #e8e8e8 75%, #ffffff 100%);
+            background-size: 400% 400%;
+            animation: whiteShift 20s ease infinite;
+            opacity: 1;
+        }
+
         /* Animations */
         @keyframes rainbowShift {
             0% { background-position: 0% 50%; }
@@ -240,6 +280,26 @@
             0% { background-position: 0% 0%; }
             50% { background-position: 100% 100%; }
             100% { background-position: 0% 0%; }
+        }
+
+        @keyframes whiteShift {
+            0% { 
+                background-position: 0% 0%;
+                filter: brightness(1);
+            }
+            50% { 
+                background-position: 100% 100%;
+                filter: brightness(1.02);
+            }
+            100% { 
+                background-position: 0% 0%;
+                filter: brightness(1);
+            }
+        }
+
+        /* Smooth gradient transition for theme change */
+        body.theme-transition .dynamic-background {
+            transition: background 1.5s ease, opacity 1.5s ease;
         }
 
         /* Firework effect animations */
@@ -410,6 +470,12 @@
             border: 2px solid var(--accent-pink);
         }
 
+        .theme-a-prayer .header,
+        .theme-white-continue .header {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid #ff3333;
+        }
+
         .header h1 {
             font-family: 'Playfair Display', serif;
             color: var(--accent-pink);
@@ -456,6 +522,11 @@
             border: 2px solid var(--accent-pink);
         }
 
+        .theme-a-prayer .card,
+        .theme-white-continue .card {
+            border: 2px solid #f0f0f0;
+        }
+
         .card.active {
             opacity: 1;
             transform: translateX(0) rotateY(0);
@@ -496,6 +567,68 @@
             overflow-y: auto;
             max-height: calc(100% - 130px);
             margin-bottom: 20px;
+        }
+
+        /* Card 18 specific styles to fit content without scrolling */
+        #card-18 .card-content {
+            max-height: calc(100% - 100px) !important;
+            overflow: visible !important;
+            padding-top: 10px;
+        }
+
+        #card-18 .special-text-container {
+            margin: 10px 0 15px 0;
+        }
+
+        #card-18 .special-text {
+            font-size: 1.5rem;
+            padding: 8px 15px;
+            margin-bottom: 5px;
+        }
+
+        #card-18 .ps-text {
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            padding: 3px 10px;
+        }
+
+        #card-18 .card-gif {
+            max-height: 180px;
+            margin: 10px 0;
+        }
+
+        #card-18 .card-description {
+            font-size: 1rem;
+            margin: 10px 0;
+            padding: 0 5px;
+        }
+
+        #card-18 .see-next-container {
+            margin-top: 15px;
+        }
+
+        #card-18 .see-next-btn {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 600px) {
+            #card-18 .card-content {
+                max-height: calc(100% - 90px) !important;
+            }
+            
+            #card-18 .special-text {
+                font-size: 1.3rem;
+                padding: 6px 12px;
+            }
+            
+            #card-18 .card-gif {
+                max-height: 140px;
+            }
+            
+            #card-18 .card-description {
+                font-size: 0.95rem;
+            }
         }
 
         .card-description {
@@ -569,6 +702,13 @@
             box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
         }
 
+        .theme-a-prayer .nav-btn,
+        .theme-white-continue .nav-btn {
+            background-color: #f0f0f0;
+            color: #ff3333;
+            box-shadow: 0 4px 8px rgba(255, 51, 51, 0.2);
+        }
+
         .nav-btn:hover {
             background-color: var(--accent-pink);
             color: white;
@@ -578,6 +718,13 @@
 
         .black-theme .nav-btn:hover {
             box-shadow: 0 6px 12px rgba(255, 0, 0, 0.4);
+        }
+
+        .theme-a-prayer .nav-btn:hover,
+        .theme-white-continue .nav-btn:hover {
+            background-color: #ff3333;
+            color: white;
+            box-shadow: 0 6px 12px rgba(255, 51, 51, 0.4);
         }
 
         .nav-btn:active {
@@ -606,6 +753,12 @@
             box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
         }
 
+        .theme-a-prayer .card-start-btn,
+        .theme-white-continue .card-start-btn {
+            background: linear-gradient(to right, #ff3333, #cc0000);
+            box-shadow: 0 6px 15px rgba(255, 51, 51, 0.4);
+        }
+
         .card-start-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(255, 105, 180, 0.5);
@@ -613,6 +766,11 @@
 
         .black-theme .card-start-btn:hover {
             box-shadow: 0 10px 20px rgba(255, 0, 0, 0.6);
+        }
+
+        .theme-a-prayer .card-start-btn:hover,
+        .theme-white-continue .card-start-btn:hover {
+            box-shadow: 0 10px 20px rgba(255, 51, 51, 0.6);
         }
 
         .card-audio-player {
@@ -760,6 +918,11 @@
             background: linear-gradient(to right, #8b0000, #ff3333);
         }
 
+        .theme-a-prayer .yes-btn,
+        .theme-white-continue .yes-btn {
+            background: linear-gradient(to right, #ff3333, #cc0000);
+        }
+
         .no-btn {
             background: linear-gradient(to right, #cccccc, #aaaaaa);
             color: white;
@@ -828,6 +991,12 @@
             border: 2px solid var(--accent-pink);
         }
 
+        .theme-a-prayer .calendar-week,
+        .theme-white-continue .calendar-week {
+            background: linear-gradient(to bottom right, #f0f0f0, #ffffff);
+            border: 2px solid #ff3333;
+        }
+
         .calendar-title {
             text-align: center;
             font-weight: 600;
@@ -890,6 +1059,12 @@
             box-shadow: 0 6px 15px rgba(255, 0, 0, 0.5);
         }
 
+        .theme-a-prayer .see-next-btn,
+        .theme-white-continue .see-next-btn {
+            background: linear-gradient(to right, #ff3333, #cc0000);
+            box-shadow: 0 6px 15px rgba(255, 51, 51, 0.4);
+        }
+
         .see-next-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(255, 105, 180, 0.5);
@@ -897,6 +1072,11 @@
 
         .black-theme .see-next-btn:hover {
             box-shadow: 0 10px 20px rgba(255, 0, 0, 0.6);
+        }
+
+        .theme-a-prayer .see-next-btn:hover,
+        .theme-white-continue .see-next-btn:hover {
+            box-shadow: 0 10px 20px rgba(255, 51, 51, 0.6);
         }
 
         .see-next-btn i {
@@ -1077,6 +1257,21 @@
         .black-theme .decoration-3 {
             background: radial-gradient(circle, rgba(139, 0, 0, 0.4) 0%, transparent 70%);
         }
+
+        .theme-a-prayer .decoration-1,
+        .theme-white-continue .decoration-1 {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+        }
+
+        .theme-a-prayer .decoration-2,
+        .theme-white-continue .decoration-2 {
+            background: radial-gradient(circle, rgba(240, 240, 240, 0.6) 0%, transparent 70%);
+        }
+
+        .theme-a-prayer .decoration-3,
+        .theme-white-continue .decoration-3 {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.7) 0%, transparent 70%);
+        }
         
         /* Scrollbar styling */
         .card-content::-webkit-scrollbar {
@@ -1107,6 +1302,21 @@
         
         .black-theme .card-content::-webkit-scrollbar-thumb:hover {
             background: #ff6666;
+        }
+
+        .theme-a-prayer .card-content::-webkit-scrollbar-track,
+        .theme-white-continue .card-content::-webkit-scrollbar-track {
+            background: rgba(240, 240, 240, 0.5);
+        }
+        
+        .theme-a-prayer .card-content::-webkit-scrollbar-thumb,
+        .theme-white-continue .card-content::-webkit-scrollbar-thumb {
+            background: #ff3333;
+        }
+        
+        .theme-a-prayer .card-content::-webkit-scrollbar-thumb:hover,
+        .theme-white-continue .card-content::-webkit-scrollbar-thumb:hover {
+            background: #cc0000;
         }
         
         /* Envelope Styles for Card 26 */
@@ -1301,6 +1511,12 @@
             box-shadow: 0 8px 20px rgba(255, 0, 0, 0.4);
         }
         
+        .theme-a-prayer .reveal-btn-final,
+        .theme-white-continue .reveal-btn-final {
+            background: linear-gradient(to right, #ff3333, #cc0000);
+            box-shadow: 0 8px 20px rgba(255, 51, 51, 0.4);
+        }
+        
         .reveal-btn-final:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 25px rgba(136, 14, 79, 0.5);
@@ -1308,6 +1524,11 @@
         
         .black-theme .reveal-btn-final:hover {
             box-shadow: 0 12px 25px rgba(255, 0, 0, 0.5);
+        }
+        
+        .theme-a-prayer .reveal-btn-final:hover,
+        .theme-white-continue .reveal-btn-final:hover {
+            box-shadow: 0 12px 25px rgba(255, 51, 51, 0.5);
         }
         
         .reveal-btn-final:disabled {
@@ -1438,9 +1659,9 @@
                     {category: "Beauty", stars: "infinite", comment: "(everybody wants to steal my girl)"},
                     {category: "Intelligence", stars: 8, comment: "(very smart)"},
                     {category: "Personality", stars: 8, comment: "(very warming)"},
-                    {category: "Texting", stars: 5, comment: "(can be improved)"},
+                    {category: "Texting", stars: 3, comment: "(can be improved)"},
                     {category: "Stubborn", stars: 6, comment: "(gets on my nerves sometimes)"},
-                    {category: "Trustworthiness", stars: 2, comment: "(something only the lord knows)"}
+                    {category: "Durability", stars: 8, comment: "(massive respect for this strong gal)"}
                 ]
             },
             {
@@ -1478,7 +1699,7 @@
             {
                 id: 11,
                 title: "Naiilang",
-                description: "\"Tumingin ka sa amin, gusto kong linawin\" \n\nJust know that \"Sinasabi ko nga na atin ang mundo\", and I choose you kasi \"Walang ibang tulad mo\"",
+                description: "\"Tumingin ka sa akin, gusto kong linawin\" \n\nJust know that \"Sinasabi ko nga na atin ang mundo\", and I choose you kasi \"Walang ibang tulad mo\"",
                 audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/naiilang.mp3",
                 hasQuotes: true,
                 theme: "theme-naiilang"
@@ -1561,27 +1782,31 @@
             },
             {
                 id: 23,
-                title: "Let's start small",
-                description: "This month's topic: A destiny",
-                audioUrl: "https://github.com/JUP1T3RZ/aces/raw/f70b36ee7055d4cb41e9f4bc03aac371cd06b783/blackparade.mp3",
-                hasContinuousAudio: true
+                title: "",
+                description: "This month's topic: A Prayer",
+                audioUrl: "https://github.com/JUP1T3RZ/aces/blob/45b0575eae9887cf6a448160ddb5baea47542ea8/The%201975%20-%20About%20You%20(Official).mp3",
+                hasContinuousAudio: true,
+                theme: "theme-a-prayer"
             },
             {
                 id: 24,
-                title: "Week 1: Black Parade",
-                description: "I was born into this world without the touch of my father's hands. His absence shaped my entire life, and in that absence, I was raised by the world itself. Yet even from afar, he planted a seed in me, one that quietly took root over time."
+                title: "Week 1: About You",
+                description: "I don't pray to keep you. I pray for you. I pray that you become everything God is calling you to be, that your dreams unfold with courage, and that your heart finds peace; even if that path doesn't include me.",
+                theme: "theme-white-continue"
             },
             {
                 id: 25,
                 title: "",
-                description: "'Son, when you grow up,\nwould you be the savior of the broken,\nthe beaten, and the damned?'",
-                isLyrics: true
+                description: "Because real love doesn't cling or claim; it intercedes, it blesses, it lets go. God brings people into our lives not always to stay, but because, for a moment, someone needed someone else's prayers.",
+                isLyrics: true,
+                theme: "theme-white-continue"
             },
             {
                 id: 26,
                 title: "",
-                description: "The world carved grief, death, and suffering into me, shaping me into something meant to stand in front of others, so their fall would never mirror my own. And so comes the implication I bear: to give without expectation, even when it hurts. To offer protection knowing nothing may be returned. They will spit on you, walk over you, mistake restraint for weakness.",
-                hasEnvelopeReveal: true
+                description: "And still, I hold this hope gently— that if God wills it, I may walk beside you a little longer.",
+                hasEnvelopeReveal: true,
+                theme: "theme-white-continue"
             }
         ];
 
@@ -1592,6 +1817,7 @@
         let beautyStarsInterval;
         let continuousAudioPlaying = null;
         let fireworkInterval = null;
+        let previousTheme = '';
 
         // Initialize the cards
         function initCards() {
@@ -1672,7 +1898,7 @@
                 
                 card.ratings.forEach(rating => {
                     html += `<div class="rating-item">`;
-                    html += `<span class="rating-category">${rating.category}:</span>';
+                    html += `<span class="rating-category">${rating.category}:</span>`;
                     
                     if (rating.stars === "infinite") {
                         html += `<span class="rating-stars">Infinite Stars</span>`;
@@ -1759,7 +1985,7 @@
             else if (card.id === 23) {
                 html += `<div class="card-description" style="font-weight: bold; text-align: center; font-size: 1.3rem;">${formatTextWithLineBreaks(card.description)}</div>`;
                 html += `<div class="card-audio-player">`;
-                html += `<div class="audio-info"><i class="fas fa-music"></i> <span>Now playing: Black Parade</span></div>`;
+                html += `<div class="audio-info"><i class="fas fa-music"></i> <span>Now playing: About You - The 1975</span></div>`;
                 html += `<div class="audio-loading" id="audio-loading-${card.id}">Loading audio...</div>`;
                 html += `<div class="audio-error" id="audio-error-${card.id}">Audio not available</div>`;
                 html += `<audio id="audio-${card.id}" preload="auto" style="display: none;"></audio>`;
@@ -2034,8 +2260,14 @@
                 
                 console.log(`Loading audio for card ${cardId}: ${audioUrl}`);
                 
+                // Convert GitHub blob URL to raw URL
+                let rawAudioUrl = audioUrl;
+                if (audioUrl.includes('github.com') && audioUrl.includes('/blob/')) {
+                    rawAudioUrl = audioUrl.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+                }
+                
                 // Set audio source
-                audioElement.src = audioUrl;
+                audioElement.src = rawAudioUrl;
                 
                 // Set up event listeners
                 audioElement.addEventListener('canplay', function() {
@@ -2043,10 +2275,24 @@
                     console.log(`Audio loaded for card ${cardId}`);
                 });
                 
-                audioElement.addEventListener('error', function() {
+                audioElement.addEventListener('error', function(e) {
                     if (loadingElement) loadingElement.style.display = 'none';
-                    if (errorElement) errorElement.style.display = 'block';
-                    console.log(`Audio failed to load for card ${cardId}: ${audioUrl}`);
+                    if (errorElement) {
+                        errorElement.textContent = "Audio loading failed. Click to try again";
+                        errorElement.style.display = 'block';
+                        errorElement.style.cursor = 'pointer';
+                        errorElement.onclick = () => {
+                            errorElement.style.display = 'none';
+                            loadAudio();
+                        };
+                    }
+                    console.log(`Audio failed to load for card ${cardId}:`, e);
+                    
+                    // Fallback: Try the original URL if raw URL fails
+                    if (audioUrl !== rawAudioUrl) {
+                        console.log('Trying original URL as fallback...');
+                        audioElement.src = audioUrl;
+                    }
                 });
                 
                 // Set up observer to play when card is displayed
@@ -2057,7 +2303,7 @@
                             if (card.classList.contains('active')) {
                                 setTimeout(() => {
                                     playAudioForCard(cardId, isContinuous);
-                                }, 500);
+                                }, 800);
                             } else if (!isContinuous) {
                                 // Only pause if not continuous audio
                                 pauseAudioForCard(cardId);
@@ -2120,40 +2366,40 @@
             }
         }
 
-        // Toggle black theme
-        function toggleBlackTheme(enable) {
-            if (enable) {
-                document.body.classList.add('black-theme');
-                document.body.classList.remove(
-                    'theme-true-colors', 'theme-this-town', 'theme-naiilang',
-                    'theme-cowboy-in-la', 'theme-anything-4-u', 
-                    'theme-a-couple-minutes', 'theme-godspeed'
-                );
-            } else {
-                document.body.classList.remove('black-theme');
-            }
-        }
-
-        // Set dynamic theme for music cards
+        // Set dynamic theme for music cards with smooth transition
         function setDynamicTheme(cardId) {
             const card = cards.find(c => c.id === cardId);
+            
+            // Store previous theme for gradient transition
+            previousTheme = document.body.className;
+            
+            // Add transition class for smooth theme change
+            document.body.classList.add('theme-transition');
             
             // Remove all theme classes
             document.body.classList.remove(
                 'theme-true-colors', 'theme-this-town', 'theme-naiilang',
                 'theme-cowboy-in-la', 'theme-anything-4-u', 
                 'theme-a-couple-minutes', 'theme-godspeed',
-                'black-theme'
+                'black-theme', 'theme-a-prayer', 'theme-white-continue'
             );
             
-            // Apply specific theme if card has one (cards 9-16)
-            if (card && card.theme && cardId >= 9 && cardId <= 16) {
+            // Apply specific theme if card has one
+            if (card && card.theme) {
                 document.body.classList.add(card.theme);
             }
-            // Apply black theme for cards 23-26
-            else if (cardId >= 23) {
-                document.body.classList.add('black-theme');
+            // Apply white theme for cards 24-26 (continuation of prayer theme)
+            else if (cardId >= 24 && cardId <= 26) {
+                document.body.classList.add('theme-white-continue');
             }
+            
+            // Remove transition class after animation completes
+            setTimeout(() => {
+                document.body.classList.remove('theme-transition');
+            }, 1500);
+            
+            // Log theme change for debugging
+            console.log(`Theme changed: ${previousTheme} -> ${document.body.className}`);
         }
 
         // Initialize firework effect for card 18
@@ -2325,6 +2571,57 @@
                     showNextCard();
                 });
             }
+        }
+
+        // Teleport button (for NO button) - UPDATED: Fixed to stay within visible frame
+        function teleportButton(button) {
+            const card = document.getElementById(`card-17`);
+            if (!card) return;
+            
+            // Get card dimensions
+            const cardRect = card.getBoundingClientRect();
+            const buttonRect = button.getBoundingClientRect();
+            
+            // Calculate available space within the card (with padding)
+            const padding = 20;
+            
+            // Get the actual visible card area (excluding the image and text)
+            // The image is near the top, so we want to avoid overlapping it
+            // We'll keep the button in the lower 60% of the card
+            const cardContentArea = cardRect.height * 0.6; // Lower 60%
+            const startFrom = cardRect.height * 0.4; // Start from 40% from top
+            
+            // Calculate maximum position that keeps button fully visible
+            const maxLeft = cardRect.width - buttonRect.width - padding;
+            const maxTop = cardRect.height - buttonRect.height - padding;
+            const minTop = startFrom + padding; // Start below the image/text area
+            
+            // Ensure we have enough space
+            if (maxLeft <= padding || maxTop <= minTop) {
+                console.log("Not enough space for teleportation");
+                return;
+            }
+            
+            // Random position within safe zone
+            const randomX = padding + Math.random() * (maxLeft - padding);
+            const randomY = minTop + Math.random() * (maxTop - minTop);
+            
+            // Set position relative to the card
+            button.style.position = 'absolute';
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+            button.style.zIndex = '101';
+            
+            // Ensure button is visible
+            button.style.opacity = '1';
+            button.style.visibility = 'visible';
+            button.style.display = 'block';
+            
+            // Add a quick fade-in effect
+            button.style.transition = 'left 0.3s ease, top 0.3s ease, opacity 0.3s ease';
+            setTimeout(() => {
+                button.style.transition = '';
+            }, 300);
         }
 
         // Show next card with animation
@@ -2540,47 +2837,6 @@
             }
         }
 
-        // Teleport button (for NO button) - FIXED: Won't go out of frame
-        function teleportButton(button) {
-            const card = document.getElementById(`card-17`);
-            if (!card) return;
-            
-            // Get card dimensions
-            const cardRect = card.getBoundingClientRect();
-            const buttonRect = button.getBoundingClientRect();
-            
-            // Calculate available space within the card (with padding)
-            const padding = 20;
-            
-            // Ensure button stays within visible card area (accounting for image and text)
-            // The button should stay in the lower part of the card where there's space
-            const availableWidth = cardRect.width - buttonRect.width - (padding * 2);
-            
-            // Limit vertical movement to bottom 40% of card to avoid covering image/text
-            const verticalStart = cardRect.height * 0.6; // Start at 60% from top
-            const availableHeight = (cardRect.height * 0.4) - buttonRect.height - padding;
-            
-            if (availableWidth <= 0 || availableHeight <= 0) {
-                console.log("Not enough space for teleportation");
-                return;
-            }
-            
-            // Random position within available space
-            const randomX = Math.random() * availableWidth;
-            const randomY = verticalStart + (Math.random() * availableHeight);
-            
-            // Set position relative to the card
-            button.style.position = 'absolute';
-            button.style.left = `${randomX + padding}px`;
-            button.style.top = `${randomY}px`;
-            button.style.zIndex = '101';
-            
-            // Ensure button is visible
-            button.style.opacity = '1';
-            button.style.visibility = 'visible';
-            button.style.display = 'block';
-        }
-
         // Create hearts animation
         function createHeartsAnimation() {
             const heartAnimation = document.getElementById('heartAnimation');
@@ -2626,7 +2882,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initCards();
             
-            // Set initial theme (normal, not black)
+            // Set initial theme
             setDynamicTheme(1);
             
             // Add audio permission message
