@@ -1438,9 +1438,9 @@
                     {category: "Beauty", stars: "infinite", comment: "(everybody wants to steal my girl)"},
                     {category: "Intelligence", stars: 8, comment: "(very smart)"},
                     {category: "Personality", stars: 8, comment: "(very warming)"},
-                    {category: "Texting", stars: 3, comment: "(can be improved)"},
+                    {category: "Texting", stars: 5, comment: "(can be improved)"},
                     {category: "Stubborn", stars: 6, comment: "(gets on my nerves sometimes)"},
-                    {category: "Durability", stars: 8, comment: "(massive respect for this strong gal)"}
+                    {category: "Trustworthiness", stars: 2, comment: "(something only the lord knows)"}
                 ]
             },
             {
@@ -1478,7 +1478,7 @@
             {
                 id: 11,
                 title: "Naiilang",
-                description: "\"Tumingin ka sa akin, gusto kong linawin\" \n\nJust know that \"Sinasabi ko nga na atin ang mundo\", and I choose you kasi \"Walang ibang tulad mo\"",
+                description: "\"Tumingin ka sa amin, gusto kong linawin\" \n\nJust know that \"Sinasabi ko nga na atin ang mundo\", and I choose you kasi \"Walang ibang tulad mo\"",
                 audioUrl: "https://raw.githubusercontent.com/JUP1T3RZ/aces/4e65a406e6e232940950ee6b89056c31f807459e/naiilang.mp3",
                 hasQuotes: true,
                 theme: "theme-naiilang"
@@ -1672,7 +1672,7 @@
                 
                 card.ratings.forEach(rating => {
                     html += `<div class="rating-item">`;
-                    html += `<span class="rating-category">${rating.category}:</span>`;
+                    html += `<span class="rating-category">${rating.category}:</span>';
                     
                     if (rating.stars === "infinite") {
                         html += `<span class="rating-stars">Infinite Stars</span>`;
